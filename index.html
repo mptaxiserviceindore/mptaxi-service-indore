@@ -1,151 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MT Taxi Service Indore | Cab Rental | One Way & Round Trip Taxi</title>
+<title>MT Taxi Service Indore | Cab Rental | One Way & Round Trip</title>
 
-<meta name="description" content="MT Taxi Service Indore provides airport taxi, one way taxi, round trip taxi and outstation cab service from Indore to Ujjain, Omkareshwar and Bhopal.">
+<meta name="description" content="MT Taxi Service Indore provides airport taxi, outstation cab, one way and round trip taxi service from Indore to Ujjain, Omkareshwar and Bhopal.">
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
-<header class="header">
+
+<header>
 
 <div class="logo">
 MT TAXI SERVICE
 <span>INDORE CAB RENTAL</span>
 </div>
 
-<a href="tel:7000688407" class="call-btn">
+
+<div class="header-actions">
+
+<a href="tel:7000688407">
 Call Now
 </a>
+
+<a href="https://wa.me/917000688407">
+WhatsApp
+</a>
+
+</div>
+
 
 </header>
 
 
+
+
+
 <section class="hero">
 
-<div class="hero-content">
+
+<div class="hero-text">
 
 <h1>
-Reliable Taxi Service From Indore
+Book Taxi From Indore
 </h1>
 
 <p>
-Airport Transfer • One Way Taxi • Round Trip • Outstation Cab
+Safe • Reliable • Affordable Cab Service
 </p>
-
-
-<div class="booking-box">
-
-<h2>Book Your Taxi</h2>
-
-
-<div class="trip-type">
-
-<label>
-<input type="radio" name="trip" value="One Way" checked>
-One Way
-</label>
-
-
-<label>
-<input type="radio" name="trip" value="Round Trip">
-Round Trip
-</label>
 
 </div>
 
 
 
-<div class="form-group">
+
+
+<div class="booking-card">
+
+
+<div class="tabs">
+
+
+<button class="active" onclick="setTrip('One Way')">
+One Way
+</button>
+
+
+<button onclick="setTrip('Round Trip')">
+Round Trip
+</button>
+
+
+<button onclick="setTrip('Airport')">
+Airport
+</button>
+
+
+<button onclick="setTrip('Local')">
+Local
+</button>
+
+
+</div>
+
+
+
+<input type="hidden" id="tripType" value="One Way">
+
+
+
+
+
+<div class="location-box">
+
+
+<div class="field">
 
 <label>Pickup Location</label>
 
 <input 
-type="text" 
 id="pickup"
+type="text"
 placeholder="Enter Pickup Location">
 
-<div id="pickup-list" class="suggestions"></div>
+<div id="pickupSuggestion"></div>
 
 </div>
 
 
 
-<div class="form-group">
+
+<div class="field">
 
 <label>Drop Location</label>
 
 <input 
-type="text" 
 id="drop"
+type="text"
 placeholder="Enter Drop Location">
 
-<div id="drop-list" class="suggestions"></div>
+
+<div id="dropSuggestion"></div>
+
+</div>
+
 
 </div>
 
 
 
-<div class="two-column">
+
+
+<div class="date-box">
+
 
 <div>
+
 <label>Pickup Date</label>
 
-<input type="date" id="date">
+<input type="date" id="pickupDate">
 
 </div>
+
 
 
 <div>
+
 <label>Pickup Time</label>
 
-<input type="time" id="time">
+<input type="time" id="pickupTime">
 
 </div>
 
+
 </div>
 
 
 
-<div class="form-group">
+
+
+<div id="returnSection" class="date-box hidden">
+
+
+<div>
+
+<label>Return Date</label>
+
+<input type="date" id="returnDate">
+
+</div>
+
+
+
+<div>
+
+<label>Return Time</label>
+
+<input type="time" id="returnTime">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="field">
+
 
 <label>Select Car</label>
 
+
 <select id="car">
 
-<option>Swift Dzire</option>
-<option>Ertiga</option>
-<option>Innova Crysta</option>
-<option>Scorpio</option>
-<option>Tempo Traveller</option>
+<option value="dzire">
+Swift Dzire - Sedan
+</option>
+
+
+<option value="ertiga">
+Ertiga - SUV
+</option>
+
+
+<option value="innova">
+Innova Crysta - Premium
+</option>
+
+
+<option value="scorpio">
+Scorpio
+</option>
+
+
+<option value="traveller">
+Tempo Traveller
+</option>
+
 
 </select>
+
 
 </div>
 
 
 
-<div class="form-group">
+
+
+<div class="field">
+
 
 <label>Your Name</label>
 
 <input 
 type="text"
-id="name"
-placeholder="Enter Your Name">
+id="customerName"
+placeholder="Enter Name">
+
 
 </div>
 
 
 
-<div class="form-group">
+
+
+<div class="field">
+
 
 <label>Mobile Number</label>
 
@@ -154,126 +266,159 @@ type="tel"
 id="mobile"
 placeholder="Enter Mobile Number">
 
+
 </div>
 
 
 
-<button onclick="sendWhatsApp()" class="book-btn">
 
-Book Taxi On WhatsApp
+
+<button class="search-btn" onclick="calculateFare()">
+
+Search Taxi
 
 </button>
 
 
-</div>
+
+
+<div id="fareBox">
+
+
+Estimated Fare:
+₹ <span id="fare">0</span>
+
 
 </div>
+
+
+
+
+
+<button class="whatsapp-btn" onclick="sendBooking()">
+
+Book On WhatsApp
+
+</button>
+
+
+
+</div>
+
 
 </section>
 
 
 
-<section class="services">
 
-<h2>Our Taxi Services</h2>
-
-
-<div class="service-grid">
-
-<div>
-<h3>Airport Transfer</h3>
-<p>Comfortable pickup and drop service from Indore Airport.</p>
-</div>
-
-
-<div>
-<h3>One Way Taxi</h3>
-<p>Book a taxi for one way travel without return charges.</p>
-</div>
-
-
-<div>
-<h3>Round Trip Taxi</h3>
-<p>Perfect cab service for family and business travel.</p>
-</div>
-
-
-<div>
-<h3>Outstation Cab</h3>
-<p>Travel safely to nearby cities with experienced drivers.</p>
-</div>
-
-</div>
-
-</section>
 
 
 
 <section class="routes">
 
-<h2>Popular Routes</h2>
 
-<ul>
-
-<li>Indore To Ujjain Taxi</li>
-
-<li>Indore To Omkareshwar Taxi</li>
-
-<li>Indore To Bhopal Taxi</li>
-
-<li>Indore Airport Transfer</li>
-
-</ul>
-
-</section>
+<h2>
+Popular Taxi Routes
+</h2>
 
 
+<div class="route-grid">
 
-<section class="fleet">
 
-<h2>Our Cars</h2>
+<div>
+Indore → Ujjain
+</div>
 
-<div class="cars">
 
-<div>Swift Dzire</div>
-<div>Ertiga</div>
-<div>Innova Crysta</div>
-<div>Scorpio</div>
-<div>Tempo Traveller</div>
+<div>
+Indore → Omkareshwar
+</div>
+
+
+<div>
+Indore → Bhopal
+</div>
+
+
+<div>
+Indore Airport Transfer
+</div>
+
 
 </div>
 
+
+</section>
+
+
+
+
+
+
+
+<section class="why">
+
+
+<h2>
+Why Choose MT Taxi Service
+</h2>
+
+
+<div class="features">
+
+
+<div>
+24×7 Booking
+</div>
+
+
+<div>
+Experienced Drivers
+</div>
+
+
+<div>
+Clean Cars
+</div>
+
+
+<div>
+On Time Pickup
+</div>
+
+
+</div>
+
+
 </section>
 
 
 
-<section class="contact">
 
-<h2>MT TAXI SERVICE INDORE</h2>
-
-<p>
-24x7 Taxi Booking Available
-</p>
-
-<p>
-WhatsApp Booking: 7000688407
-</p>
-
-</section>
 
 
 
 <footer>
 
+<h3>
+MT TAXI SERVICE INDORE AND CAB RENTAL
+</h3>
+
+
 <p>
-© MT Taxi Service Indore And Cab Rental
+WhatsApp Booking: 7000688407
 </p>
+
 
 </footer>
 
 
 
+
+
+
 <script src="script.js"></script>
+
 
 </body>
 
