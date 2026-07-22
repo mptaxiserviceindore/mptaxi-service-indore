@@ -1,3 +1,19 @@
+// Taxi Rates (आप बाद में यहां किराया बदल सकते हैं)
+
+const rates = {
+
+    dzire: 12,
+    ertiga: 15,
+    innova: 20,
+    scorpio: 18,
+    traveller: 25
+
+};
+
+
+
+// Popular Locations
+
 const locations = [
 
 "Indore",
@@ -22,32 +38,75 @@ const locations = [
 
 
 
-function setupSuggestion(inputId, listId){
 
-const input = document.getElementById(inputId);
-const list = document.getElementById(listId);
+// Trip Selection
 
+function setTrip(type){
 
-input.addEventListener("input", function(){
-
-
-let value = this.value.toLowerCase();
-
-list.innerHTML="";
+document.getElementById("tripType").value = type;
 
 
-if(value===""){
-    return;
+let buttons = document.querySelectorAll(".tabs button");
+
+
+buttons.forEach(btn=>{
+
+btn.classList.remove("active");
+
+});
+
+event.target.classList.add("active");
+
+
+
+let returnBox = document.getElementById("returnSection");
+
+
+if(type === "Round Trip"){
+
+returnBox.classList.remove("hidden");
+
+}
+
+else{
+
+returnBox.classList.add("hidden");
+
 }
 
 
-let results = locations.filter(place =>
-place.toLowerCase().includes(value)
-);
+}
 
 
 
-results.forEach(place=>{
+
+// Location Suggestion
+
+
+function locationSearch(inputId, suggestionId){
+
+
+let input = document.getElementById(inputId);
+
+let suggestion = document.getElementById(suggestionId);
+
+
+
+input.addEventListener("input",function(){
+
+
+let text=this.value.toLowerCase();
+
+suggestion.innerHTML="";
+
+
+if(text=="") return;
+
+
+
+locations
+.filter(place=>place.toLowerCase().includes(text))
+.forEach(place=>{
 
 
 let div=document.createElement("div");
@@ -58,12 +117,14 @@ div.innerText=place;
 div.onclick=function(){
 
 input.value=place;
-list.innerHTML="";
 
-};
+suggestion.innerHTML="";
+
+}
 
 
-list.appendChild(div);
+suggestion.appendChild(div);
+
 
 
 });
@@ -76,93 +137,189 @@ list.appendChild(div);
 
 
 
-setupSuggestion("pickup","pickup-list");
+locationSearch("pickup","pickupSuggestion");
 
-setupSuggestion("drop","drop-list");
-
-
+locationSearch("drop","dropSuggestion");
 
 
 
-function sendWhatsApp(){
 
 
-let trip =
-document.querySelector('input[name="trip"]:checked').value;
 
 
-let pickup =
-document.getElementById("pickup").value;
+// Fare Calculator
 
 
-let drop =
-document.getElementById("drop").value;
+function calculateFare(){
 
 
-let date =
-document.getElementById("date").value;
+
+let car=document.getElementById("car").value;
 
 
-let time =
-document.getElementById("time").value;
+let rate=rates[car];
 
 
-let car =
-document.getElementById("car").value;
+let distance=0;
 
 
-let name =
-document.getElementById("name").value;
+// Default route estimate
+
+let pickup=document.getElementById("pickup").value.toLowerCase();
+
+let drop=document.getElementById("drop").value.toLowerCase();
 
 
-let mobile =
-document.getElementById("mobile").value;
 
+if(
+pickup.includes("indore") &&
+drop.includes("ujjain")
+){
+
+distance=55;
+
+}
+
+else if(
+pickup.includes("indore") &&
+drop.includes("omkareshwar")
+){
+
+distance=80;
+
+}
+
+else if(
+pickup.includes("indore") &&
+drop.includes("bopal")
+){
+
+distance=190;
+
+}
+
+else{
+
+distance=100;
+
+}
+
+
+
+
+let trip=document.getElementById("tripType").value;
+
+
+
+let fare;
+
+
+
+if(trip=="Round Trip"){
+
+fare = distance * 2 * rate;
+
+}
+
+else{
+
+fare = distance * rate;
+
+}
+
+
+
+
+// Minimum Fare
+
+if(fare < 1800){
+
+fare = 1800;
+
+}
+
+
+
+document.getElementById("fare").innerText =
+Math.round(fare);
+
+
+
+}
+
+
+
+
+
+
+
+// WhatsApp Booking
+
+
+function sendBooking(){
 
 
 let message =
 
-`🚕 New Taxi Booking
+`🚕 MT TAXI SERVICE INDORE
 
-MT TAXI SERVICE INDORE
+New Taxi Booking
 
 Trip Type:
-${trip}
+${document.getElementById("tripType").value}
 
-Customer Name:
-${name}
 
-Mobile Number:
-${mobile}
+Name:
+${document.getElementById("customerName").value}
 
-Pickup Location:
-${pickup}
 
-Drop Location:
-${drop}
+Mobile:
+${document.getElementById("mobile").value}
+
+
+Pickup:
+${document.getElementById("pickup").value}
+
+
+Drop:
+${document.getElementById("drop").value}
+
 
 Pickup Date:
-${date}
+${document.getElementById("pickupDate").value}
+
 
 Pickup Time:
-${time}
+${document.getElementById("pickupTime").value}
+
+
+Return Date:
+${document.getElementById("returnDate").value}
+
+
+Return Time:
+${document.getElementById("returnTime").value}
+
 
 Car:
-${car}
+${document.getElementById("car").value}
+
+
+Estimated Fare:
+₹${document.getElementById("fare").innerText}
+
+
 
 Thank You`;
 
 
 
-let whatsappURL =
-
+let url =
 "https://wa.me/917000688407?text="
-
-+ encodeURIComponent(message);
-
++encodeURIComponent(message);
 
 
-window.open(whatsappURL,"_blank");
 
+window.open(url,"_blank");
 
 }
