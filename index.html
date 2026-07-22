@@ -1,405 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MP TAXI SERVICE INDORE & CAB RENTAL</title>
-<meta name="author" content="MP TAXI SERVICE INDORE">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#f4b400">
-<meta name="description" content="24x7 Taxi Service in Indore. Local Taxi, Outstation Taxi, Airport Taxi, Ujjain Taxi, Omkareshwar Taxi, Tempo Traveller Booking.">
+<title>MT Taxi Service Indore | Cab Rental | One Way & Round Trip Taxi</title>
 
-<meta name="keywords" content="Taxi Indore, Cab Booking Indore, Indore Taxi, Ujjain Taxi, Omkareshwar Taxi, Airport Taxi">
+<meta name="description" content="MT Taxi Service Indore provides airport taxi, one way taxi, round trip taxi and outstation cab service from Indore to Ujjain, Omkareshwar and Bhopal.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:#f7f7f7;
-color:#222;
-}
-
-header{
-background:#111;
-padding:15px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{
-color:#FFD700;
-font-size:26px;
-font-weight:700;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:20px;
-font-weight:500;
-}
-
-.hero{
-
-background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('https://images.unsplash.com/photo-1519641471654-76ce0107ad1b');
-
-background-size:cover;
-
-background-position:center;
-
-height:90vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
-
-color:white;
-
-padding:20px;
-
-}
-
-.hero h1{
-
-font-size:52px;
-
-margin-bottom:20px;
-
-}
-
-.hero p{
-
-font-size:20px;
-
-margin-bottom:25px;
-
-}
-
-.btn{
-
-background:#FFD700;
-
-padding:14px 30px;
-
-border-radius:8px;
-
-text-decoration:none;
-
-font-weight:bold;
-
-color:black;
-
-margin:10px;
-
-display:inline-block;
-
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<header>
+<header class="header">
 
 <div class="logo">
-
-MP TAXI SERVICE
-
+MT TAXI SERVICE
+<span>INDORE CAB RENTAL</span>
 </div>
 
-<nav>
-
-<a href="#">Home</a>
-
-<a href="#">Fleet</a>
-
-<a href="#">Routes</a>
-
-<a href="#">Booking</a>
-
-<a href="#">Contact</a>
-
-</nav>
+<a href="tel:7000688407" class="call-btn">
+Call Now
+</a>
 
 </header>
 
+
 <section class="hero">
 
-<div>
+<div class="hero-content">
 
-<h1>24×7 Taxi Service in Indore</h1>
+<h1>
+Reliable Taxi Service From Indore
+</h1>
 
-<p>Local • Outstation • Airport Pickup • Tempo Traveller</p>
+<p>
+Airport Transfer • One Way Taxi • Round Trip • Outstation Cab
+</p>
 
-<a class="btn" href="tel:7000688407">Call Now</a>
 
-<a class="btn" href="https://wa.me/917000688407">WhatsApp</a>
+<div class="booking-box">
+
+<h2>Book Your Taxi</h2>
+
+
+<div class="trip-type">
+
+<label>
+<input type="radio" name="trip" value="One Way" checked>
+One Way
+</label>
+
+
+<label>
+<input type="radio" name="trip" value="Round Trip">
+Round Trip
+</label>
 
 </div>
 
-</section>
-<section style="padding:60px 20px;background:white;">
 
-<h2 style="text-align:center;font-size:36px;margin-bottom:30px;">
-Book Your Taxi
-</h2>
 
-<div style="max-width:900px;margin:auto;background:#f5f5f5;padding:25px;border-radius:12px;">
+<div class="form-group">
 
-<input type="text" placeholder="Pickup Location (Indore)"
-style="width:100%;padding:15px;margin-bottom:15px;font-size:18px;">
+<label>Pickup Location</label>
 
-<select style="width:100%;padding:15px;margin-bottom:15px;font-size:18px;">
+<input 
+type="text" 
+id="pickup"
+placeholder="Enter Pickup Location">
 
-<option>Select Destination</option>
+<div id="pickup-list" class="suggestions"></div>
 
-<option>Indore → Ujjain</option>
+</div>
 
-<option>Indore → Omkareshwar</option>
 
-<option>Indore → Maheshwar</option>
 
-<option>Indore → Mandu</option>
+<div class="form-group">
 
-<option>Indore → Dewas</option>
+<label>Drop Location</label>
 
-<option>Indore → Bhopal</option>
+<input 
+type="text" 
+id="drop"
+placeholder="Enter Drop Location">
 
-<option>Indore → Pithampur</option>
+<div id="drop-list" class="suggestions"></div>
 
-<option>Indore Airport</option>
+</div>
 
-</select>
 
-<select style="width:100%;padding:15px;margin-bottom:15px;font-size:18px;">
 
-<option>Select Vehicle</option>
+<div class="two-column">
 
-<option>Sedan</option>
+<div>
+<label>Pickup Date</label>
 
+<input type="date" id="date">
+
+</div>
+
+
+<div>
+<label>Pickup Time</label>
+
+<input type="time" id="time">
+
+</div>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>Select Car</label>
+
+<select id="car">
+
+<option>Swift Dzire</option>
 <option>Ertiga</option>
-
-<option>SUV</option>
-
-<option>Innova</option>
-
 <option>Innova Crysta</option>
-
+<option>Scorpio</option>
 <option>Tempo Traveller</option>
 
 </select>
-<div style="margin-bottom:15px;">
-<label style="font-size:18px;font-weight:bold;">Trip Type</label><br><br>
-
-<label>
-<input type="radio" name="tripType" value="One Way" checked>
- One Way
-</label>
-
-&nbsp;&nbsp;&nbsp;
-
-<label>
-<input type="radio" name="tripType" value="Round Trip">
- Round Trip
-</label>
-
-</div>
-<input type="date"
-style="width:100%;padding:15px;margin-bottom:15px;font-size:18px;">
-<div id="returnDateBox" style="margin-top:15px;">
-
-<label style="font-size:18px;font-weight:bold;">
-Return Date
-</label>
-
-<input type="date"
-style="width:100%;padding:15px;margin-top:10px;font-size:18px;">
-
-</div>
-<a href="https://wa.me/917000688407"
-style="display:block;background:#25D366;color:white;text-align:center;padding:16px;border-radius:8px;text-decoration:none;font-size:20px;font-weight:bold;">
-
-BOOK NOW ON WHATSAPP
-
-</a>
 
 </div>
 
-</section>
 
-<section style="padding:60px 20px;background:#fafafa;">
 
-<h2 style="text-align:center;font-size:36px;margin-bottom:30px;">
-Popular Routes
-</h2>
+<div class="form-group">
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:1100px;margin:auto;">
+<label>Your Name</label>
 
-<div style="background:white;padding:20px;border-radius:10px;">
-<h3>Indore → Ujjain</h3>
-<p>Sedan: ₹1800</p>
-<p>Round Trip: ₹3500</p>
-</div>
-
-<div style="background:white;padding:20px;border-radius:10px;">
-<h3>Indore → Omkareshwar</h3>
-<p>Sedan: ₹2200</p>
-<p>Round Trip: ₹4200</p>
-</div>
-
-<div style="background:white;padding:20px;border-radius:10px;">
-<h3>Indore → Bhopal</h3>
-<p>Sedan: ₹3500</p>
-<p>Round Trip: ₹6500</p>
-</div>
+<input 
+type="text"
+id="name"
+placeholder="Enter Your Name">
 
 </div>
 
-</section>
-<section style="padding:60px 20px;background:white;">
 
-<h2 style="text-align:center;font-size:36px;margin-bottom:30px;">
-Our Fleet
-</h2>
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:1100px;margin:auto;">
+<div class="form-group">
 
-<div style="background:#f7f7f7;padding:20px;border-radius:10px;text-align:center;">
-<h3>🚗 Sedan</h3>
-<p>Dzire | Aura | Amaze</p>
+<label>Mobile Number</label>
+
+<input 
+type="tel"
+id="mobile"
+placeholder="Enter Mobile Number">
+
 </div>
 
-<div style="background:#f7f7f7;padding:20px;border-radius:10px;text-align:center;">
-<h3>🚙 Ertiga</h3>
-<p>6+1 Comfortable Seats</p>
-</div>
 
-<div style="background:#f7f7f7;padding:20px;border-radius:10px;text-align:center;">
-<h3>🚘 SUV</h3>
-<p>Bolero | Scorpio</p>
-</div>
 
-<div style="background:#f7f7f7;padding:20px;border-radius:10px;text-align:center;">
-<h3>🚖 Innova Crysta</h3>
-<p>Luxury Family Travel</p>
-</div>
+<button onclick="sendWhatsApp()" class="book-btn">
 
-<div style="background:#f7f7f7;padding:20px;border-radius:10px;text-align:center;">
-<h3>🚌 Tempo Traveller</h3>
-<p>12 / 17 / 20 / 26 Seater</p>
+Book Taxi On WhatsApp
+
+</button>
+
+
 </div>
 
 </div>
 
 </section>
 
-<section style="padding:60px 20px;background:#FFD700;text-align:center;">
 
-<h2>Why Choose MP TAXI SERVICE?</h2>
 
-<p>✔ 24×7 Service</p>
-<p>✔ Professional Drivers</p>
-<p>✔ Clean & Sanitized Cars</p>
-<p>✔ Affordable Fare</p>
-<p>✔ Local & Outstation Taxi</p>
+<section class="services">
 
-</section>
-</section>
+<h2>Our Taxi Services</h2>
 
-<!-- 👇 यहीं नीचे यह कोड पेस्ट करो -->
 
-<section style="padding:60px 20px;background:#ffffff;text-align:center;">
-<h2 style="font-size:36px;margin-bottom:20px;">About MP Taxi Service Indore</h2>
+<div class="service-grid">
 
-<p style="max-width:900px;margin:auto;font-size:18px;line-height:1.8;">
-MP Taxi Service Indore provides 24×7 local and outstation taxi services across Madhya Pradesh. We offer Sedan, Ertiga, SUV, Innova Crysta and Tempo Traveller for airport transfers, family trips, business travel and religious tours like Ujjain, Omkareshwar, Maheshwar and more.
-</p>
-
-</section>
-<section style="padding:60px 20px;background:#f8f8f8;text-align:center;">
-
-<h2 style="font-size:36px;margin-bottom:30px;">Customer Reviews</h2>
-
-<div style="max-width:900px;margin:auto;">
-
-<div style="background:white;padding:20px;border-radius:10px;margin-bottom:20px;">
-⭐⭐⭐⭐⭐
-<p>"Excellent taxi service. Driver was on time and the car was very clean."</p>
-<b>- Rajesh</b>
+<div>
+<h3>Airport Transfer</h3>
+<p>Comfortable pickup and drop service from Indore Airport.</p>
 </div>
 
-<div style="background:white;padding:20px;border-radius:10px;margin-bottom:20px;">
-⭐⭐⭐⭐⭐
-<p>"Best taxi service for Ujjain trip. Affordable price and professional driver."</p>
-<b>- Aman</b>
+
+<div>
+<h3>One Way Taxi</h3>
+<p>Book a taxi for one way travel without return charges.</p>
 </div>
 
-<div style="background:white;padding:20px;border-radius:10px;">
-⭐⭐⭐⭐⭐
-<p>"Very comfortable journey. Highly recommended."</p>
-<b>- Priya</b>
+
+<div>
+<h3>Round Trip Taxi</h3>
+<p>Perfect cab service for family and business travel.</p>
+</div>
+
+
+<div>
+<h3>Outstation Cab</h3>
+<p>Travel safely to nearby cities with experienced drivers.</p>
 </div>
 
 </div>
 
 </section>
-<footer style="background:#111;color:white;padding:40px;text-align:center;">
-<footer style="background:#111;color:white;padding:40px;text-align:center;">
 
-<h2>MP TAXI SERVICE INDORE & CAB RENTAL</h2>
 
-<p>📞 7000688407</p>
 
-<p>📧 tahirmp09t6478idr@gmail.com</p>
+<section class="routes">
 
-<p>📍 Indore, Madhya Pradesh</p>
+<h2>Popular Routes</h2>
 
-<p style="margin
-<p style="margin-top:20px;">
-© 2025 MP TAXI SERVICE INDORE & CAB RENTAL. All Rights Reserved.
+<ul>
+
+<li>Indore To Ujjain Taxi</li>
+
+<li>Indore To Omkareshwar Taxi</li>
+
+<li>Indore To Bhopal Taxi</li>
+
+<li>Indore Airport Transfer</li>
+
+</ul>
+
+</section>
+
+
+
+<section class="fleet">
+
+<h2>Our Cars</h2>
+
+<div class="cars">
+
+<div>Swift Dzire</div>
+<div>Ertiga</div>
+<div>Innova Crysta</div>
+<div>Scorpio</div>
+<div>Tempo Traveller</div>
+
+</div>
+
+</section>
+
+
+
+<section class="contact">
+
+<h2>MT TAXI SERVICE INDORE</h2>
+
+<p>
+24x7 Taxi Booking Available
 </p>
 
 <p>
-<a href="tel:7000688407" style="color:#FFD700;text-decoration:none;">
-📞 Call: 7000688407
-</a>
+WhatsApp Booking: 7000688407
 </p>
 
+</section>
+
+
+
+<footer>
+
 <p>
-<a href="https://wa.me/917000688407" style="color:#25D366;text-decoration:none;">
-💬 WhatsApp Booking
-</a>
+© MT Taxi Service Indore And Cab Rental
 </p>
 
 </footer>
-<a href="https://wa.me/917000688407"
-style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;
-width:60px;height:60px;border-radius:50%;display:flex;
-align-items:center;justify-content:center;
-font-size:30px;text-decoration:none;
-box-shadow:0 4px 10px rgba(0,0,0,0.3);z-index:9999;">
-💬
-</a>
+
+
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
