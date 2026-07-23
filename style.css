@@ -898,3 +898,90 @@ font-size:24px;
 }
 
 }
+/* ===================================
+   SEARCH SUGGESTIONS
+=================================== */
+
+.input-group{
+position:relative;
+}
+
+.suggestion-box{
+
+position:absolute;
+
+top:100%;
+
+left:0;
+
+width:100%;
+
+background:#fff;
+
+border:1px solid #ddd;
+
+border-top:none;
+
+border-radius:0 0 10px 10px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+display:none;
+
+max-height:250px;
+
+overflow-y:auto;
+
+z-index:9999;
+
+}
+
+.suggestion-item{
+
+padding:14px 16px;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.2s;
+
+border-bottom:1px solid #f1f1f1;
+
+}
+
+.suggestion-item:last-child{
+
+border-bottom:none;
+
+}
+
+.suggestion-item:hover{
+
+background:#FFD700;
+
+color:#111;
+
+font-weight:600;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.suggestion-box{
+
+max-height:220px;
+
+}
+
+.suggestion-item{
+
+padding:16px;
+
+font-size:17px;
+
+}
+
+}
