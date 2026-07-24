@@ -871,3 +871,26 @@ new Date().getFullYear()
 );
 
 }
+/* ============================
+ROUTE FINDER
+============================ */
+
+function getRouteData(from, to) {
+
+const key1 = from.toLowerCase().trim() + "-" + to.toLowerCase().trim();
+const key2 = to.toLowerCase().trim() + "-" + from.toLowerCase().trim();
+
+if (routes[key1]) {
+    return routes[key1];
+}
+
+if (routes[key2]) {
+    return routes[key2];
+}
+
+return {
+    km: 50,
+    time: "Approx 1 Hour"
+};
+
+}
