@@ -1,104 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MP Taxi Service</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>MP Taxi Service Indore | Cab Rental</title>
+
+<meta name="description" content="Book One Way, Round Trip, Airport Transfer & Local Rental Taxi in Indore at Best Price.">
+
+<meta name="keywords" content="Indore Taxi, MP Taxi Service, Cab Rental, Airport Taxi, One Way Taxi">
+
+<meta name="theme-color" content="#0D6EFD">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 </head>
 
 <body>
 
-<header>
+<!-- HEADER -->
+
+<header class="header">
 
 <div class="container">
 
-<div class="logo">
+<a href="#" class="logo">
 
-🚖 MP TAXI SERVICE
+<i class="fa-solid fa-taxi"></i>
 
-</div>
+<span>MP Taxi Service</span>
 
-<nav>
+</a>
 
-<a href="#">Home</a>
+<nav id="navbar">
 
-<a href="#">About</a>
+<a href="#home">Home</a>
 
-<a href="#">Fleet</a>
+<a href="#booking">Book Cab</a>
 
-<a href="#">Contact</a>
+<a href="#routes">Routes</a>
+
+<a href="#fleet">Fleet</a>
+
+<a href="#about">About</a>
+
+<a href="#contact">Contact</a>
 
 </nav>
+
+<div id="menuBtn">
+
+<i class="fa-solid fa-bars"></i>
+
+</div>
 
 </div>
 
 </header>
 
-<section class="hero">
+<!-- HERO -->
+
+<section class="hero" id="home">
 
 <div class="container">
 
-<div class="booking-box">
+<div class="hero-box">
 
-<div class="tabs">
+<h1>
 
-<button class="active">One Way</button>
+MP Taxi Service Indore
 
-<button>Round Trip</button>
+</h1>
 
-<button>Airport</button>
+<p>
 
-<button>Local Rental</button>
+One Way • Round Trip • Airport Transfer • Local Rental
+
+</p>
+
+<!-- BOOKING -->
+
+<div class="booking-box" id="booking">
+
+<div class="trip-tabs">
+
+<button class="trip-btn active"
+
+data-trip="oneway">
+
+One Way
+
+</button>
+
+<button class="trip-btn"
+
+data-trip="round">
+
+Round Trip
+
+</button>
+
+<button class="trip-btn"
+
+data-trip="airport">
+
+Airport
+
+</button>
+
+<button class="trip-btn"
+
+data-trip="rental">
+
+Local Rental
+
+</button>
 
 </div>
 
-<div class="search-grid">
+<div class="form-grid">
 
 <div class="field">
 
-<label>FROM</label>
+<label>
+
+Pickup Location
+
+</label>
 
 <input
+
 type="text"
+
 id="pickup"
-placeholder="Pickup City">
+
+autocomplete="off"
+
+placeholder="Enter Pickup Location">
+
+<div id="pickupSuggestions"
+
+class="suggestions">
+
+</div>
 
 </div>
 
 <div class="field">
 
-<label>TO</label>
+<label>
+
+Drop Location
+
+</label>
 
 <input
+
 type="text"
+
 id="drop"
-placeholder="Drop City">
+
+autocomplete="off"
+
+placeholder="Enter Drop Location">
+
+<div id="dropSuggestions"
+
+class="suggestions">
+
+</div>
 
 </div>
 
 <div class="field">
 
-<label>DEPARTURE</label>
+<label>
+
+Journey Date
+
+</label>
 
 <input
+
 type="date"
-id="date">
+
+id="journeyDate">
 
 </div>
 
 <div class="field">
 
-<label>TIME</label>
+<label>
+
+Pickup Time
+
+</label>
 
 <input
+
 type="time"
-id="time">
+
+id="pickupTime">
+
+</div>
+<!-- Round Trip Fields -->
+
+<div class="field return-field" id="returnDateBox">
+
+<label>
+
+Return Date
+
+</label>
+
+<input
+
+type="date"
+
+id="returnDate">
+
+</div>
+
+<div class="field return-field" id="returnTimeBox">
+
+<label>
+
+Return Time
+
+</label>
+
+<input
+
+type="time"
+
+id="returnTime">
+
+</div>
+
+<!-- Local Rental Package -->
+
+<div class="field rental-field" id="packageBox">
+
+<label>
+
+Rental Package
+
+</label>
+
+<select id="rentalPackage">
+
+<option value="">Select Package</option>
+
+<option>1 Hour / 10 KM</option>
+
+<option>2 Hour / 20 KM</option>
+
+<option>3 Hour / 30 KM</option>
+
+<option>4 Hour / 40 KM</option>
+
+<option>5 Hour / 50 KM</option>
+
+<option>6 Hour / 60 KM</option>
+
+<option>7 Hour / 70 KM</option>
+
+<option>8 Hour / 80 KM</option>
+
+<option>9 Hour / 90 KM</option>
+
+<option>10 Hour / 100 KM</option>
+
+<option>11 Hour / 110 KM</option>
+
+<option>12 Hour / 120 KM</option>
+
+</select>
 
 </div>
 
@@ -106,7 +293,9 @@ id="time">
 
 <button id="searchBtn">
 
-SEARCH CABS
+<i class="fa-solid fa-magnifying-glass"></i>
+
+Search Cabs
 
 </button>
 
@@ -118,43 +307,139 @@ SEARCH CABS
 
 </div>
 
+</div>
+
 </section>
-<section class="popular-routes">
+
+<!-- POPULAR ROUTES -->
+
+<section class="routes" id="routes">
 
 <div class="container">
 
-<h2>Popular Routes</h2>
+<h2>
+
+Popular Taxi Routes
+
+</h2>
+
+<p class="section-text">
+
+Most Booked Routes Across Madhya Pradesh
+
+</p>
 
 <div class="route-grid">
 
 <div class="route-card">
-<h3>Indore → Ujjain</h3>
-<p>One Way • Round Trip</p>
+
+<h3>
+
+Indore → Ujjain
+
+</h3>
+
+<p>
+
+Mahakal Temple Special
+
+</p>
+
 </div>
 
 <div class="route-card">
-<h3>Indore → Omkareshwar</h3>
-<p>One Way • Round Trip</p>
+
+<h3>
+
+Indore → Omkareshwar
+
+</h3>
+
+<p>
+
+Jyotirling Darshan
+
+</p>
+
 </div>
 
 <div class="route-card">
-<h3>Indore → Maheshwar</h3>
-<p>One Way • Round Trip</p>
+
+<h3>
+
+Indore → Maheshwar
+
+</h3>
+
+<p>
+
+Heritage Tour
+
+</p>
+
 </div>
 
 <div class="route-card">
-<h3>Indore → Bhopal</h3>
-<p>One Way • Round Trip</p>
+
+<h3>
+
+Indore → Bhopal
+
+</h3>
+
+<p>
+
+Airport & City Ride
+
+</p>
+
+</div>
+<div class="route-card">
+
+<h3>
+
+Indore → Dewas
+
+</h3>
+
+<p>
+
+Daily Cab Available
+
+</p>
+
 </div>
 
 <div class="route-card">
-<h3>Indore Airport</h3>
-<p>Pickup • Drop</p>
+
+<h3>
+
+Indore Airport
+
+</h3>
+
+<p>
+
+Pickup & Drop Service
+
+</p>
+
 </div>
 
 <div class="route-card">
-<h3>Indore → Dewas</h3>
-<p>Taxi Available</p>
+
+<h3>
+
+Indore → Mandu
+
+</h3>
+
+<p>
+
+Weekend Trip
+
+</p>
+
 </div>
 
 </div>
@@ -163,13 +448,25 @@ SEARCH CABS
 
 </section>
 
-<section class="fleet">
+<!-- FLEET -->
+
+<section class="fleet" id="fleet">
 
 <div class="container">
 
-<h2>Available Cars</h2>
+<h2>
 
-<div class="car-grid">
+Choose Your Cab
+
+</h2>
+
+<p class="section-text">
+
+Clean, Comfortable & Verified Vehicles
+
+</p>
+
+<div class="fleet-grid">
 
 <div class="car-card">
 
@@ -177,9 +474,13 @@ SEARCH CABS
 
 <h3>Swift Dzire</h3>
 
-<p>4+1 Seats • AC • 2 Bags</p>
+<p>4+1 Seats • AC • Sedan</p>
 
-<button>Book Now</button>
+<button class="bookBtn">
+
+Book Now
+
+</button>
 
 </div>
 
@@ -189,33 +490,45 @@ SEARCH CABS
 
 <h3>Maruti Ertiga</h3>
 
-<p>6+1 Seats • AC • 3 Bags</p>
+<p>6+1 Seats • AC</p>
 
-<button>Book Now</button>
+<button class="bookBtn">
+
+Book Now
+
+</button>
 
 </div>
 
 <div class="car-card">
 
-<img src="images/innova.jpg" alt="Innova">
+<img src="images/innova.jpg" alt="Toyota Innova">
 
 <h3>Toyota Innova</h3>
 
-<p>6+1 Seats • AC • Premium</p>
+<p>6+1 Seats • Premium</p>
 
-<button>Book Now</button>
+<button class="bookBtn">
+
+Book Now
+
+</button>
 
 </div>
 
 <div class="car-card">
 
-<img src="images/crysta.jpg" alt="Crysta">
+<img src="images/crysta.jpg" alt="Innova Crysta">
 
 <h3>Innova Crysta</h3>
 
 <p>6+1 Seats • Luxury</p>
 
-<button>Book Now</button>
+<button class="bookBtn">
+
+Book Now
+
+</button>
 
 </div>
 
@@ -227,7 +540,11 @@ SEARCH CABS
 
 <p>12 / 17 / 20 / 26 Seater</p>
 
-<button>Book Now</button>
+<button class="bookBtn">
+
+Book Now
+
+</button>
 
 </div>
 
@@ -236,42 +553,60 @@ SEARCH CABS
 </div>
 
 </section>
-<section class="why-us">
+<!-- ABOUT -->
+
+<section class="about" id="about">
 
 <div class="container">
 
-<h2>Why Choose MP Taxi Service?</h2>
+<h2>
 
-<div class="why-grid">
+Why Choose MP Taxi Service?
 
-<div class="why-card">
-<h3>24×7 Service</h3>
-<p>Available day and night for local, airport and outstation taxi bookings.</p>
+</h2>
+
+<p class="section-text">
+
+Safe • Affordable • Professional Taxi Service Across Madhya Pradesh
+
+</p>
+
+<div class="about-grid">
+
+<div class="about-card">
+<i class="fa-solid fa-shield-halved"></i>
+<h3>Safe Journey</h3>
+<p>Verified drivers with clean and well-maintained vehicles.</p>
 </div>
 
-<div class="why-card">
-<h3>Verified Drivers</h3>
-<p>Experienced, verified and professional drivers for safe travel.</p>
+<div class="about-card">
+<i class="fa-solid fa-clock"></i>
+<h3>24×7 Available</h3>
+<p>Book your cab anytime for local and outstation travel.</p>
 </div>
 
-<div class="why-card">
-<h3>Clean Vehicles</h3>
-<p>Well-maintained, sanitized and comfortable cars for every trip.</p>
+<div class="about-card">
+<i class="fa-solid fa-wallet"></i>
+<h3>Best Pricing</h3>
+<p>Transparent fares with no hidden charges.</p>
 </div>
 
-<div class="why-card">
-<h3>Transparent Pricing</h3>
-<p>No hidden charges. Clear fare before booking.</p>
+<div class="about-card">
+<i class="fa-brands fa-whatsapp"></i>
+<h3>Instant Booking</h3>
+<p>Confirm your ride directly on WhatsApp in one click.</p>
 </div>
 
-<div class="why-card">
-<h3>Instant WhatsApp Booking</h3>
-<p>Book your cab directly on WhatsApp in one click.</p>
+<div class="about-card">
+<i class="fa-solid fa-map-location-dot"></i>
+<h3>All MP Coverage</h3>
+<p>Taxi available for Indore, Ujjain, Bhopal, Dewas, Maheshwar, Omkareshwar and more.</p>
 </div>
 
-<div class="why-card">
-<h3>Local & Outstation</h3>
-<p>One Way, Round Trip, Airport Transfer and Local Rental available.</p>
+<div class="about-card">
+<i class="fa-solid fa-star"></i>
+<h3>Trusted Service</h3>
+<p>Reliable service focused on comfort, punctuality and customer satisfaction.</p>
 </div>
 
 </div>
@@ -280,51 +615,165 @@ SEARCH CABS
 
 </section>
 
-<section class="contact">
+<!-- FAQ -->
+
+<section class="faq">
 
 <div class="container">
 
-<h2>Contact Us</h2>
+<h2>Frequently Asked Questions</h2>
 
-<div class="contact-box">
+<div class="faq-box">
 
-<div>
+<div class="faq-item">
+<h3>Can I book One Way Taxi?</h3>
+<p>Yes, One Way taxis are available across Madhya Pradesh.</p>
+</div>
 
-<h4>Call</h4>
+<div class="faq-item">
+<h3>Is Airport Pickup Available?</h3>
+<p>Yes, Airport Pickup and Drop are available 24×7.</p>
+</div>
 
-<a href="tel:7000688407">7000688407</a>
+<div class="faq-item">
+<h3>Can I book Local Rental?</h3>
+<p>Yes, packages from 1 Hour to 12 Hours are available.</p>
+</div>
 
 </div>
 
-<div>
-
-<h4>WhatsApp</h4>
-
-<a href="https://wa.me/917000688407">Book on WhatsApp</a>
-
 </div>
 
-<div>
+</section>
+<!-- CONTACT -->
 
-<h4>Email</h4>
+<section class="contact" id="contact">
 
-<a href="mailto:tahirmp09t6478idr@gmail.com">
-tahirmp09t6478idr@gmail.com
+<div class="container">
+
+<h2>
+
+Contact MP Taxi Service
+
+</h2>
+
+<p class="section-text">
+
+We're Available 24×7 For Your Journey
+
+</p>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+
+<i class="fa-solid fa-phone"></i>
+
+<h3>Call Us</h3>
+
+<a href="tel:+917000688407">
+
++91 70006 88407
+
 </a>
 
 </div>
 
+<div class="contact-card">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+<h3>WhatsApp</h3>
+
+<a href="https://wa.me/917000688407" target="_blank">
+
+Chat Now
+
+</a>
+
+</div>
+
+<div class="contact-card">
+
+<i class="fa-solid fa-envelope"></i>
+
+<h3>Email</h3>
+
+<a href="mailto:tahirmp09t6478idr@gmail.com">
+
+Send Mail
+
+</a>
+
+</div>
+
+<div class="contact-card">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<h3>Location</h3>
+
+<p>
+
+Indore, Madhya Pradesh
+
+</p>
+
+</div>
+
 </div>
 
 </div>
 
 </section>
+
+<!-- FLOATING BUTTONS -->
+
+<a href="tel:+917000688407" class="call-float">
+
+<i class="fa-solid fa-phone"></i>
+
+</a>
+
+<a href="https://wa.me/917000688407"
+
+class="whatsapp-float"
+
+target="_blank">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+</a>
+
+<button id="topBtn">
+
+<i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+<!-- FOOTER -->
 
 <footer>
 
 <div class="container">
 
-<p>© 2025 MP Taxi Service. All Rights Reserved.</p>
+<h3>
+
+MP Taxi Service Indore
+
+</h3>
+
+<p>
+
+One Way • Round Trip • Airport Transfer • Local Rental
+
+</p>
+
+<p>
+
+© 2025 MP Taxi Service Indore. All Rights Reserved.
+
+</p>
 
 </div>
 
@@ -333,4 +782,5 @@ tahirmp09t6478idr@gmail.com
 <script src="script.js"></script>
 
 </body>
+
 </html>
