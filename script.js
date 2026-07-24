@@ -1,111 +1,192 @@
-/*========================================
-MP TAXI SERVICE
-script.js - Part 1
-========================================*/
+/*====================================
+MP TAXI SERVICE INDORE
+script.js FINAL PART 1
+====================================*/
 
-/* Trip Tabs */
 
-const tabs = document.querySelectorAll(".tabs button");
+// MOBILE MENU
 
-tabs.forEach(tab=>{
+const menuBtn = document.getElementById("menuBtn");
+const navbar = document.getElementById("navbar");
 
-tab.addEventListener("click",()=>{
+if(menuBtn){
 
-tabs.forEach(btn=>btn.classList.remove("active"));
+menuBtn.addEventListener("click",()=>{
 
-tab.classList.add("active");
+navbar.classList.toggle("active");
+
+});
+
+}
+
+
+// CLOSE MENU AFTER CLICK
+
+document.querySelectorAll("#navbar a").forEach(link=>{
+
+link.addEventListener("click",()=>{
+
+navbar.classList.remove("active");
 
 });
 
 });
 
-/* MP Location Database */
+
+
+// TRIP TABS
+
+const tripButtons = document.querySelectorAll(".trip-btn");
+
+const returnDateBox = document.getElementById("returnDateBox");
+const returnTimeBox = document.getElementById("returnTimeBox");
+const packageBox = document.getElementById("packageBox");
+
+
+let selectedTrip="oneway";
+
+
+tripButtons.forEach(btn=>{
+
+
+btn.addEventListener("click",()=>{
+
+
+tripButtons.forEach(b=>{
+
+b.classList.remove("active");
+
+});
+
+
+btn.classList.add("active");
+
+
+selectedTrip = btn.dataset.trip;
+
+
+
+// HIDE ALL
+
+if(returnDateBox)
+returnDateBox.style.display="none";
+
+
+if(returnTimeBox)
+returnTimeBox.style.display="none";
+
+
+if(packageBox)
+packageBox.style.display="none";
+
+
+
+// ROUND TRIP
+
+if(selectedTrip==="round"){
+
+
+returnDateBox.style.display="block";
+
+returnTimeBox.style.display="block";
+
+
+}
+
+
+
+// LOCAL RENTAL
+
+if(selectedTrip==="rental"){
+
+
+packageBox.style.display="block";
+
+
+}
+
+
+// AIRPORT
+
+if(selectedTrip==="airport"){
+
+
+console.log("Airport Trip Selected");
+
+
+}
+
+
+});
+
+
+});
+
+
+
+// LOCATION DATABASE
 
 const locations=[
 
 "Indore",
 "Indore Airport",
 "Indore Railway Station",
-"Rajwada",
-"Vijay Nagar",
-"Palasia",
-"MR10",
-"Bhawarkuan",
-"Rau",
-"Mhow",
-"Pithampur",
-
 "Ujjain",
-"Mahakal Temple",
-"Ujjain Railway Station",
-
+"Mahakal Temple Ujjain",
 "Omkareshwar",
 "Maheshwar",
-
 "Dewas",
-
 "Bhopal",
 "Bhopal Airport",
-
 "Ratlam",
-
 "Mandsaur",
-
 "Neemuch",
-
 "Gwalior",
-
 "Jabalpur",
-
 "Khajuraho",
-
 "Sanchi",
-
 "Rewa",
-
 "Satna",
-
 "Burhanpur",
-
 "Khandwa",
-
 "Sehore",
-
 "Vidisha",
-
 "Sagar",
-
 "Shivpuri",
-
 "Dhar",
-
 "Mandu",
-
-"Barwani"
+"Barwani",
+"Mhow",
+"Rau",
+"Pithampur"
 
 ];
 
-/* Input */
 
-const pickup=document.getElementById("pickup");
 
-const drop=document.getElementById("drop");
+// SUGGESTION FUNCTION
 
-/* Suggestion Box */
 
-function createSuggestion(input){
+function setupSuggestion(inputId,boxId){
 
-const box=document.createElement("div");
 
-box.className="suggestion-box";
+const input=document.getElementById(inputId);
 
-input.parentElement.appendChild(box);
+const box=document.getElementById(boxId);
 
-input.addEventListener("keyup",()=>{
 
-const value=input.value.toLowerCase();
+if(!input || !box) return;
+
+
+
+input.addEventListener("input",()=>{
+
+
+let value=input.value.toLowerCase();
+
 
 box.innerHTML="";
+
 
 if(value===""){
 
@@ -115,215 +196,485 @@ return;
 
 }
 
-const result=locations.filter(item=>
 
-item.toLowerCase().includes(value)
+
+let result=locations.filter(place=>
+
+place.toLowerCase().includes(value)
 
 );
 
+
+
 result.slice(0,8).forEach(place=>{
 
-const div=document.createElement("div");
 
-div.className="suggestion-item";
+let div=document.createElement("div");
 
-div.innerText=place;
 
-div.onclick=function(){
+div.innerHTML=
+
+'<i class="fa-solid fa-location-dot"></i> '+place;
+
+
+div.onclick=()=>{
+
 
 input.value=place;
 
 box.style.display="none";
 
+
 };
+
 
 box.appendChild(div);
 
-});
-
-box.style.display=result.length?"block":"none";
 
 });
 
-document.addEventListener("click",(e)=>{
 
-if(!input.parentElement.contains(e.target)){
+
+if(result.length){
+
+box.style.display="block";
+
+}
+
+else{
 
 box.style.display="none";
 
 }
 
+
 });
+
+
+document.addEventListener("click",(e)=>{
+
+
+if(!input.contains(e.target) && !box.contains(e.target)){
+
+
+box.style.display="none";
+
 
 }
 
-createSuggestion(pickup);
 
-createSuggestion(drop);
-/*========================================
-Search Button
-========================================*/
+});
+
+
+}
+
+
+
+setupSuggestion(
+"pickup",
+"pickupSuggestions"
+);
+
+
+setupSuggestion(
+"drop",
+"dropSuggestions"
+);
+
+/*====================================
+MP TAXI SERVICE INDORE
+script.js FINAL PART 2
+SEARCH + FARE SYSTEM
+====================================*/
+
 
 const searchBtn = document.getElementById("searchBtn");
 
-searchBtn.addEventListener("click", function () {
 
-const pickup = document.getElementById("pickup").value.trim();
-const drop = document.getElementById("drop").value.trim();
-const date = document.getElementById("date").value;
-const time = document.getElementById("time").value;
+if(searchBtn){
 
-if (pickup === "") {
-alert("Please enter Pickup Location");
+
+searchBtn.addEventListener("click",()=>{
+
+
+const pickup =
+document.getElementById("pickup").value.trim();
+
+
+const drop =
+document.getElementById("drop").value.trim();
+
+
+const date =
+document.getElementById("journeyDate").value;
+
+
+const time =
+document.getElementById("pickupTime").value;
+
+
+const returnDate =
+document.getElementById("returnDate")?.value || "";
+
+
+const returnTime =
+document.getElementById("returnTime")?.value || "";
+
+
+const packageName =
+document.getElementById("rentalPackage")?.value || "";
+
+
+
+if(pickup===""){
+
+alert("Please Select Pickup Location");
 return;
+
 }
 
-if (drop === "") {
-alert("Please enter Drop Location");
+
+if(selectedTrip!=="rental" && drop===""){
+
+alert("Please Select Drop Location");
 return;
+
 }
 
-if (date === "") {
-alert("Please select Journey Date");
+
+if(date===""){
+
+alert("Please Select Journey Date");
 return;
+
 }
 
-if (time === "") {
-alert("Please select Pickup Time");
+
+if(time===""){
+
+alert("Please Select Pickup Time");
 return;
-}
-
-/* Save Booking Data */
-
-localStorage.setItem("pickup", pickup);
-localStorage.setItem("drop", drop);
-localStorage.setItem("date", date);
-localStorage.setItem("time", time);
-
-/* Demo Fare */
-
-let fare = 0;
-
-if (
-pickup.toLowerCase().includes("indore") &&
-drop.toLowerCase().includes("ujjain")
-) {
-
-fare = 1800;
-
-} else if (
-pickup.toLowerCase().includes("indore") &&
-drop.toLowerCase().includes("omkareshwar")
-) {
-
-fare = 2800;
-
-} else if (
-pickup.toLowerCase().includes("indore") &&
-drop.toLowerCase().includes("maheshwar")
-) {
-
-fare = 2500;
-
-} else if (
-pickup.toLowerCase().includes("indore") &&
-drop.toLowerCase().includes("dewas")
-) {
-
-fare = 1200;
-
-} else {
-
-fare = 1500;
 
 }
 
-localStorage.setItem("fare", fare);
 
-/* Open Results Page */
 
-window.location.href = "results.html";
+if(selectedTrip==="round"){
+
+if(returnDate===""){
+
+alert("Please Select Return Date");
+return;
+
+}
+
+if(returnTime===""){
+
+alert("Please Select Return Time");
+return;
+
+}
+
+}
+
+
+
+if(selectedTrip==="rental"){
+
+if(packageName===""){
+
+alert("Please Select Rental Package");
+return;
+
+}
+
+}
+
+
+
+// FARE CALCULATION
+
+
+let fare=1500;
+
+
+
+let p=pickup.toLowerCase();
+
+let d=drop.toLowerCase();
+
+
+
+if(
+p.includes("indore") &&
+d.includes("ujjain")
+){
+
+fare=1800;
+
+}
+
+else if(
+p.includes("indore") &&
+d.includes("omkareshwar")
+){
+
+fare=2800;
+
+}
+
+else if(
+p.includes("indore") &&
+d.includes("maheshwar")
+){
+
+fare=2500;
+
+}
+
+else if(
+p.includes("indore") &&
+d.includes("dewas")
+){
+
+fare=1200;
+
+}
+
+else if(
+p.includes("indore") &&
+d.includes("bholpal")
+){
+
+fare=2500;
+
+}
+
+
+
+// ROUND TRIP EXTRA
+
+
+if(selectedTrip==="round"){
+
+fare=fare*2;
+
+}
+
+
+
+// AIRPORT CHARGE
+
+
+if(selectedTrip==="airport"){
+
+fare=fare+300;
+
+}
+
+
+
+// RENTAL PACKAGE PRICE
+
+
+if(selectedTrip==="rental"){
+
+
+if(packageName.includes("1 Hour")){
+
+fare=500;
+
+}
+
+else if(packageName.includes("2 Hour")){
+
+fare=900;
+
+}
+
+else if(packageName.includes("4 Hour")){
+
+fare=1600;
+
+}
+
+else if(packageName.includes("8 Hour")){
+
+fare=2800;
+
+}
+
+else if(packageName.includes("12 Hour")){
+
+fare=4000;
+
+}
+
+}
+
+
+
+// SAVE DATA
+
+
+localStorage.setItem("tripType",selectedTrip);
+
+localStorage.setItem("pickup",pickup);
+
+localStorage.setItem("drop",drop);
+
+localStorage.setItem("date",date);
+
+localStorage.setItem("time",time);
+
+localStorage.setItem("returnDate",returnDate);
+
+localStorage.setItem("returnTime",returnTime);
+
+localStorage.setItem("package",packageName);
+
+localStorage.setItem("fare",fare);
+
+
+
+// OPEN RESULTS
+
+
+window.location.href="results.html";
+
 
 });
-/*========================================
-RESULTS + BOOKING + WHATSAPP
-script.js - Part 3
-========================================*/
 
-/* Show Search Data on results.html */
-
-if(document.getElementById("pickupText")){
-
-document.getElementById("pickupText").innerText=
-localStorage.getItem("pickup");
-
-document.getElementById("dropText").innerText=
-localStorage.getItem("drop");
-
-document.getElementById("dateText").innerText=
-localStorage.getItem("date");
-
-document.getElementById("timeText").innerText=
-localStorage.getItem("time");
-
-document.getElementById("fareText").innerText=
-"₹ "+localStorage.getItem("fare");
 
 }
 
-/* Book Button */
+/*====================================
+MP TAXI SERVICE INDORE
+script.js FINAL PART 3
+RESULT PAGE
+====================================*/
 
-document.querySelectorAll(".bookNow").forEach(btn=>{
 
-btn.addEventListener("click",function(){
+// SHOW RESULT DATA
 
-const car=this.dataset.car;
+if(document.getElementById("resultPickup")){
+
+document.getElementById("resultPickup").innerText =
+localStorage.getItem("pickup");
+
+document.getElementById("resultDrop").innerText =
+localStorage.getItem("drop");
+
+document.getElementById("resultDate").innerText =
+localStorage.getItem("date");
+
+document.getElementById("resultTime").innerText =
+localStorage.getItem("time");
+
+document.getElementById("resultTrip").innerText =
+localStorage.getItem("tripType");
+
+document.getElementById("resultFare").innerText =
+"₹ " + localStorage.getItem("fare");
+
+}
+
+
+
+// BOOK NOW BUTTON
+
+const bookButtons=document.querySelectorAll(".bookBtn");
+
+
+bookButtons.forEach(btn=>{
+
+
+btn.addEventListener("click",()=>{
+
+
+let car=btn.dataset.car || 
+btn.parentElement.querySelector("h3").innerText;
+
+
 
 localStorage.setItem("car",car);
 
+
 window.location.href="booking.html";
 
-});
 
 });
 
-/* Booking Page */
+
+});
+
+
+
+/*====================================
+PART 4
+BOOKING PAGE + WHATSAPP
+====================================*/
+
 
 if(document.getElementById("selectedCar")){
 
-document.getElementById("selectedCar").innerText=
+
+document.getElementById("selectedCar").innerText =
 localStorage.getItem("car");
 
-document.getElementById("bookingFare").innerText=
-"₹ "+localStorage.getItem("fare");
 
 }
 
-/* WhatsApp Booking */
 
-const confirmBtn=document.getElementById("confirmBooking");
+if(document.getElementById("bookingFare")){
 
-if(confirmBtn){
 
-confirmBtn.addEventListener("click",function(){
+document.getElementById("bookingFare").innerText =
+"₹ " + localStorage.getItem("fare");
 
-const name=document.getElementById("customerName").value.trim();
 
-const mobile=document.getElementById("customerMobile").value.trim();
+}
 
-const address=document.getElementById("pickupAddress").value.trim();
 
-const note=document.getElementById("specialNote").value.trim();
 
-if(name==""){
+const confirmBooking =
+document.getElementById("confirmBooking");
 
-alert("Enter Name");
+
+
+if(confirmBooking){
+
+
+confirmBooking.addEventListener("click",()=>{
+
+
+const name =
+document.getElementById("customerName").value.trim();
+
+
+const mobile =
+document.getElementById("customerMobile").value.trim();
+
+
+const address =
+document.getElementById("pickupAddress").value.trim();
+
+
+const note =
+document.getElementById("specialNote").value.trim();
+
+
+
+if(name===""){
+
+alert("Enter Your Name");
 
 return;
 
 }
 
-if(mobile.length!=10){
+
+if(mobile.length!==10){
 
 alert("Enter Valid Mobile Number");
 
@@ -331,40 +682,176 @@ return;
 
 }
 
-const bookingId="MP"+Math.floor(Math.random()*900000+100000);
 
-const message=`🚖 *MP TAXI SERVICE*
 
-🆔 Booking ID : ${bookingId}
+let bookingID =
+"MP"+Math.floor(100000+Math.random()*900000);
 
-👤 Name : ${name}
 
-📞 Mobile : ${mobile}
 
-📍 Pickup : ${localStorage.getItem("pickup")}
+let message=
 
-📍 Drop : ${localStorage.getItem("drop")}
+`🚖 MP TAXI SERVICE INDORE
 
-📅 Date : ${localStorage.getItem("date")}
+🆔 Booking ID: ${bookingID}
 
-🕒 Time : ${localStorage.getItem("time")}
+👤 Name: ${name}
 
-🚗 Vehicle : ${localStorage.getItem("car")}
+📞 Mobile: ${mobile}
 
-💰 Fare : ₹${localStorage.getItem("fare")}
+🚕 Trip: ${localStorage.getItem("tripType")}
 
-🏠 Pickup Address : ${address}
+📍 Pickup: ${localStorage.getItem("pickup")}
 
-📝 Note : ${note}`;
+📍 Drop: ${localStorage.getItem("drop")}
+
+📅 Date: ${localStorage.getItem("date")}
+
+🕒 Time: ${localStorage.getItem("time")}
+
+🔁 Return Date: ${localStorage.getItem("returnDate")}
+
+🔁 Return Time: ${localStorage.getItem("returnTime")}
+
+📦 Package: ${localStorage.getItem("package")}
+
+🚗 Car: ${localStorage.getItem("car")}
+
+💰 Fare: ₹${localStorage.getItem("fare")}
+
+🏠 Address: ${address}
+
+📝 Note: ${note}`;
+
+
 
 window.open(
 
-"https://wa.me/917000688407?text="+encodeURIComponent(message),
+"https://wa.me/917000688407?text="+
+encodeURIComponent(message),
 
 "_blank"
 
 );
 
+
+
 });
+
+
+}
+
+
+
+/*====================================
+PART 5
+ANIMATION + SCROLL + EXTRA
+====================================*/
+
+
+
+// SCROLL REVEAL
+
+
+const revealElements =
+document.querySelectorAll(
+".route-card,.car-card,.about-card,.contact-card,.faq-item"
+);
+
+
+
+function reveal(){
+
+
+revealElements.forEach(el=>{
+
+
+let top =
+el.getBoundingClientRect().top;
+
+
+if(top < window.innerHeight-80){
+
+el.classList.add("active");
+
+}
+
+
+});
+
+
+}
+
+
+
+window.addEventListener("scroll",reveal);
+
+reveal();
+
+
+
+
+// BACK TO TOP
+
+
+const topBtn=document.getElementById("topBtn");
+
+
+if(topBtn){
+
+
+window.addEventListener("scroll",()=>{
+
+
+if(window.scrollY>400){
+
+topBtn.style.display="flex";
+
+}
+
+else{
+
+topBtn.style.display="none";
+
+}
+
+
+});
+
+
+
+topBtn.addEventListener("click",()=>{
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+
+});
+
+
+}
+
+
+
+// AUTO YEAR
+
+
+const year =
+document.querySelector("footer p");
+
+
+if(year){
+
+year.innerHTML =
+year.innerHTML.replace(
+"2025",
+new Date().getFullYear()
+);
 
 }
