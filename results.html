@@ -4,230 +4,234 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Select Cab | MP Taxi Service</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Available Cabs | MP Taxi Service Indore</title>
 
 <link rel="stylesheet" href="style.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 </head>
+
 
 <body>
 
-<header>
+
+<header class="header">
 
 <div class="container">
 
-<div class="logo">
+<a class="logo" href="index.html">
 
-🚖 MP TAXI SERVICE
+<i class="fa-solid fa-taxi"></i>
 
-</div>
+MP Taxi Service
 
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="#">Fleet</a>
-
-<a href="#">Support</a>
-
-</nav>
+</a>
 
 </div>
 
 </header>
 
+
+
 <section class="results-page">
+
 
 <div class="container">
 
-<div class="trip-summary">
 
-<h2>
 
-<span id="pickupText"></span>
+<div class="result-box">
+
+
+<h1>
+
+Available Cabs
+
+</h1>
+
+
+
+<div class="journey-info">
+
+
+<p>
+<i class="fa-solid fa-location-dot"></i>
+
+<span id="resultPickup"></span>
 
 →
 
-<span id="dropText"></span>
-
-</h2>
-
-<p>
-
-Journey Date :
-
-<b id="dateText"></b>
-
-&nbsp;&nbsp;|&nbsp;&nbsp;
-
-Pickup Time :
-
-<b id="timeText"></b>
+<span id="resultDrop"></span>
 
 </p>
 
+
+<p>
+
+<i class="fa-solid fa-calendar"></i>
+
+<span id="resultDate"></span>
+
+</p>
+
+
+<p>
+
+<i class="fa-solid fa-clock"></i>
+
+<span id="resultTime"></span>
+
+</p>
+
+
+<p>
+
+Trip:
+<span id="resultTrip"></span>
+
+</p>
+
+
+<h2 id="resultFare"></h2>
+
+
 </div>
 
-<div class="cab-list">
 
-<div class="cab-card">
+</div>
 
-<img src="images/dzire.jpg" alt="Swift Dzire">
 
-<div class="cab-info">
+
+
+
+<div class="results-cars">
+
+
+
+<div class="car-card">
+
+<img src="images/dzire.jpg">
 
 <h3>Swift Dzire</h3>
 
-<p>AC • Sedan • 4 Seats</p>
+<p>4+1 Seats • AC • Sedan</p>
 
-<h4 id="fareText"></h4>
 
-</div>
+<button class="bookBtn">
 
-<button
-
-class="bookNow"
-
-data-car="Swift Dzire">
-
-Select Cab
+Book Now
 
 </button>
 
-</div>
-
-<div class="cab-card">
-
-<img src="images/ertiga.jpg" alt="Ertiga">
-
-<div class="cab-info">
-
-<h3>Maruti Ertiga</h3>
-
-<p>AC • SUV • 6 Seats</p>
-
-<h4>
-
-₹2200
-
-</h4>
 
 </div>
 
-<button
 
-class="bookNow"
 
-data-car="Maruti Ertiga">
 
-Select Cab
+<div class="car-card">
+
+<img src="images/ertiga.jpg">
+
+<h3>Ertiga</h3>
+
+<p>6+1 Seats • AC</p>
+
+
+<button class="bookBtn">
+
+Book Now
 
 </button>
 
+
 </div>
 
-<div class="cab-card">
 
-<img src="images/innova.jpg" alt="Toyota Innova">
 
-<div class="cab-info">
+
+
+<div class="car-card">
+
+<img src="images/innova.jpg">
 
 <h3>Toyota Innova</h3>
 
-<p>AC • MUV • 6 Seats</p>
+<p>6+1 Seats • Premium</p>
 
-<h4>₹2800</h4>
 
-</div>
+<button class="bookBtn">
 
-<button
-class="bookNow"
-data-car="Toyota Innova">
-
-Select Cab
+Book Now
 
 </button>
 
+
 </div>
 
-<div class="cab-card">
 
-<img src="images/crysta.jpg" alt="Innova Crysta">
 
-<div class="cab-info">
+
+
+<div class="car-card">
+
+<img src="images/crysta.jpg">
 
 <h3>Innova Crysta</h3>
 
-<p>Premium • 6 Seats</p>
+<p>Luxury Ride</p>
 
-<h4>₹3500</h4>
 
-</div>
+<button class="bookBtn">
 
-<button
-class="bookNow"
-data-car="Innova Crysta">
-
-Select Cab
+Book Now
 
 </button>
 
+
 </div>
 
-<div class="cab-card">
 
-<img src="images/tempo.jpg" alt="Tempo Traveller">
 
-<div class="cab-info">
+<div class="car-card">
+
+<img src="images/tempo.jpg">
 
 <h3>Tempo Traveller</h3>
 
-<p>12 Seats • AC</p>
+<p>12/17/20/26 Seater</p>
 
-<h4>₹5200</h4>
 
-</div>
+<button class="bookBtn">
 
-<button
-class="bookNow"
-data-car="Tempo Traveller">
-
-Select Cab
+Book Now
 
 </button>
 
-</div>
 
 </div>
 
+
+
 </div>
+
+
+</div>
+
 
 </section>
 
-<footer>
 
-<div class="container">
 
-<p>
-
-© 2025 MP Taxi Service. All Rights Reserved.
-
-</p>
-
-</div>
-
-</footer>
 
 <script src="script.js"></script>
+
 
 </body>
 
