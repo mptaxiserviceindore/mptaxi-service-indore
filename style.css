@@ -1,203 +1,462 @@
-/*========================================
-MP TAXI SERVICE
-style.css - Part 1
-========================================*/
+/*=========================================
+MP TAXI SERVICE INDORE
+style.css (Final Part 1)
+=========================================*/
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
-}
-
-html{
 scroll-behavior:smooth;
 }
 
 body{
-background:#f4f6f9;
+background:#f6f8fb;
 color:#222;
 overflow-x:hidden;
 }
 
 .container{
 width:92%;
-max-width:1250px;
+max-width:1280px;
 margin:auto;
 }
 
-/* HEADER */
+/*========================
+HEADER
+========================*/
 
-header{
-position:sticky;
+.header{
+position:fixed;
 top:0;
+left:0;
+width:100%;
 background:#fff;
-z-index:999;
-box-shadow:0 2px 15px rgba(0,0,0,.08);
+box-shadow:0 4px 20px rgba(0,0,0,.08);
+z-index:9999;
+animation:headerDown .7s ease;
 }
 
-header .container{
+@keyframes headerDown{
+
+from{
+opacity:0;
+transform:translateY(-40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.header .container{
+height:74px;
 display:flex;
-justify-content:space-between;
 align-items:center;
-padding:18px 0;
+justify-content:space-between;
 }
 
 .logo{
-font-size:26px;
-font-weight:700;
-color:#0057D9;
-}
-
-nav{
 display:flex;
-gap:35px;
+align-items:center;
+gap:10px;
+text-decoration:none;
+font-size:24px;
+font-weight:700;
+color:#0D6EFD;
 }
 
-nav a{
+.logo i{
+font-size:28px;
+}
+
+#navbar{
+display:flex;
+gap:32px;
+}
+
+#navbar a{
 text-decoration:none;
-color:#333;
 font-size:15px;
 font-weight:500;
+color:#444;
 transition:.3s;
+position:relative;
 }
 
-nav a:hover{
-color:#0057D9;
+#navbar a:hover{
+color:#0D6EFD;
 }
 
-/* HERO */
+#navbar a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0%;
+height:2px;
+background:#0D6EFD;
+transition:.35s;
+}
+
+#navbar a:hover::after{
+width:100%;
+}
+
+#menuBtn{
+display:none;
+font-size:24px;
+cursor:pointer;
+}
+
+/*========================
+HERO
+========================*/
 
 .hero{
-padding:60px 0;
-background:#eef4ff;
+padding-top:130px;
+padding-bottom:70px;
+background:linear-gradient(135deg,#edf5ff,#ffffff);
 }
+
+.hero-box{
+
+background:#fff;
+
+border-radius:22px;
+
+padding:45px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.08);
+
+animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.hero h1{
+
+font-size:42px;
+
+font-weight:700;
+
+color:#111;
+
+margin-bottom:10px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+color:#666;
+
+margin-bottom:35px;
+
+}
+
+/*========================
+BOOKING BOX
+========================*/
 
 .booking-box{
+
 background:#fff;
-border-radius:18px;
-padding:35px;
-box-shadow:0 15px 35px rgba(0,0,0,.08);
+
 }
 
-/* TABS */
+.trip-tabs{
 
-.tabs{
 display:flex;
+
 gap:12px;
-margin-bottom:30px;
+
 flex-wrap:wrap;
+
+margin-bottom:30px;
+
 }
 
-.tabs button{
-padding:12px 22px;
+.trip-btn{
+
+padding:12px 24px;
+
 border:none;
-background:#eef3ff;
-border-radius:8px;
+
+border-radius:50px;
+
+background:#edf2ff;
+
 font-size:15px;
+
 font-weight:600;
+
 cursor:pointer;
+
 transition:.3s;
+
 }
 
-.tabs button.active{
-background:#0057D9;
+.trip-btn:hover{
+
+transform:translateY(-2px);
+
+}
+
+.trip-btn.active{
+
+background:#0D6EFD;
+
 color:#fff;
+
+box-shadow:0 10px 25px rgba(13,110,253,.30);
+
 }
 
-/* SEARCH */
+.form-grid{
 
-.search-grid{
 display:grid;
-grid-template-columns:repeat(5,1fr);
+
+grid-template-columns:repeat(4,1fr);
+
 gap:18px;
+
 align-items:end;
+
+}
+
+.field{
+
+position:relative;
+
 }
 
 .field label{
+
 display:block;
+
 font-size:13px;
+
 font-weight:600;
+
 margin-bottom:8px;
+
 color:#555;
+
 }
 
 .field input,
 .field select{
+
 width:100%;
-height:52px;
-padding:0 15px;
-border:1px solid #d8d8d8;
-border-radius:10px;
+
+height:55px;
+
+padding:0 16px;
+
+border:1px solid #d9d9d9;
+
+border-radius:12px;
+
 font-size:15px;
+
 outline:none;
+
 transition:.3s;
+
 background:#fff;
+
 }
 
 .field input:focus,
 .field select:focus{
-border-color:#0057D9;
+
+border-color:#0D6EFD;
+
+box-shadow:0 0 0 4px rgba(13,110,253,.12);
+
 }
 
 #searchBtn{
+
 width:100%;
-height:52px;
+
+height:55px;
+
 border:none;
-border-radius:10px;
-background:#0057D9;
+
+border-radius:12px;
+
+background:#0D6EFD;
+
 color:#fff;
+
 font-size:16px;
+
 font-weight:600;
+
 cursor:pointer;
-transition:.3s;
+
+transition:.35s;
+
 }
 
 #searchBtn:hover{
-background:#0045ad;
-}
-/*========================================
-POPULAR ROUTES
-========================================*/
 
-.popular-routes{
-padding:70px 0;
+transform:translateY(-3px);
+
+box-shadow:0 18px 30px rgba(13,110,253,.28);
+
+}
+
+#searchBtn:active{
+
+transform:scale(.97);
+
+}
+
+/*========================
+SMART SUGGESTIONS
+========================*/
+
+.suggestions{
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:#fff;
+border-radius:14px;
+box-shadow:0 18px 40px rgba(0,0,0,.10);
+overflow:hidden;
+display:none;
+z-index:1000;
+max-height:280px;
+overflow-y:auto;
+margin-top:8px;
+animation:fadeSuggest .25s ease;
+}
+
+@keyframes fadeSuggest{
+from{
+opacity:0;
+transform:translateY(8px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.suggestions div{
+padding:13px 16px;
+font-size:14px;
+cursor:pointer;
+transition:.25s;
+border-bottom:1px solid #f2f2f2;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.suggestions div:last-child{
+border-bottom:none;
+}
+
+.suggestions div:hover{
+background:#f4f8ff;
+color:#0D6EFD;
+padding-left:22px;
+}
+
+.suggestions::-webkit-scrollbar{
+width:6px;
+}
+
+.suggestions::-webkit-scrollbar-thumb{
+background:#d4d4d4;
+border-radius:20px;
+}
+
+/*========================
+RETURN & RENTAL
+========================*/
+
+.return-field,
+.rental-field{
+display:none;
+animation:fadeUp .35s ease;
+}
+
+/*========================
+POPULAR ROUTES
+========================*/
+
+.routes{
+padding:80px 0;
 background:#fff;
 }
 
-.popular-routes h2{
-font-size:30px;
-font-weight:600;
-margin-bottom:30px;
+.routes h2{
+font-size:34px;
+font-weight:700;
 text-align:center;
-color:#222;
+margin-bottom:8px;
+}
+
+.section-text{
+text-align:center;
+color:#666;
+font-size:15px;
+margin-bottom:38px;
 }
 
 .route-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:22px;
 }
-
 .route-card{
 background:#fff;
-border:1px solid #e6e6e6;
-border-radius:14px;
-padding:22px;
-transition:.3s;
+border:1px solid #ececec;
+border-radius:18px;
+padding:24px;
+transition:.35s;
 cursor:pointer;
+box-shadow:0 4px 18px rgba(0,0,0,.04);
 }
 
 .route-card:hover{
-transform:translateY(-5px);
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-border-color:#0057D9;
+transform:translateY(-8px);
+box-shadow:0 18px 35px rgba(0,0,0,.10);
+border-color:#0D6EFD;
 }
 
 .route-card h3{
 font-size:18px;
 margin-bottom:8px;
-font-weight:600;
 }
 
 .route-card p{
@@ -205,249 +464,570 @@ font-size:14px;
 color:#666;
 }
 
-/*========================================
-AVAILABLE CARS
-========================================*/
+/*========================
+FLEET
+========================*/
 
 .fleet{
-padding:70px 0;
-background:#f8f9fc;
+padding:85px 0;
+background:#f7f9fc;
 }
 
-.fleet h2{
-font-size:30px;
-font-weight:600;
-text-align:center;
-margin-bottom:35px;
-}
-
-.car-grid{
+.fleet-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+gap:24px;
 }
 
 .car-card{
 background:#fff;
-border-radius:16px;
+border-radius:20px;
 overflow:hidden;
-border:1px solid #ececec;
-transition:.3s;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+transition:.35s;
 }
 
 .car-card:hover{
-transform:translateY(-6px);
-box-shadow:0 12px 28px rgba(0,0,0,.10);
+transform:translateY(-10px);
+box-shadow:0 22px 45px rgba(0,0,0,.12);
 }
 
 .car-card img{
 width:100%;
-height:180px;
+height:190px;
 object-fit:cover;
+transition:.45s;
+}
+
+.car-card:hover img{
+transform:scale(1.08);
 }
 
 .car-card h3{
-font-size:20px;
-padding:18px 18px 8px;
-font-weight:600;
+font-size:21px;
+padding:20px 20px 8px;
 }
 
 .car-card p{
-padding:0 18px 18px;
-font-size:15px;
+padding:0 20px 20px;
+font-size:14px;
 color:#666;
 }
 
-.car-card button{
-width:calc(100% - 36px);
-margin:0 18px 20px;
-height:48px;
+.bookBtn{
+width:calc(100% - 40px);
+margin:0 20px 22px;
+height:52px;
 border:none;
-border-radius:10px;
-background:#0057D9;
+border-radius:12px;
+background:#0D6EFD;
 color:#fff;
 font-size:15px;
 font-weight:600;
 cursor:pointer;
-transition:.3s;
+position:relative;
+overflow:hidden;
+transition:.35s;
 }
 
-.car-card button:hover{
-background:#0045ad;
-}
-/*========================================
-WHY CHOOSE US
-========================================*/
-
-.why-us{
-padding:70px 0;
-background:#fff;
+.bookBtn:hover{
+transform:translateY(-3px);
+box-shadow:0 16px 28px rgba(13,110,253,.28);
 }
 
-.why-us h2{
-text-align:center;
-font-size:30px;
-font-weight:600;
-margin-bottom:35px;
-color:#222;
+.bookBtn::before{
+content:"";
+position:absolute;
+left:-120%;
+top:0;
+width:60%;
+height:100%;
+background:rgba(255,255,255,.35);
+transform:skewX(-25deg);
+transition:.7s;
 }
 
-.why-grid{
+.bookBtn:hover::before{
+left:140%;
+}
+/*========================
+ABOUT SECTION
+========================*/
+
+.about{
+padding:85px 0;
+background:#ffffff;
+}
+
+.about-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:24px;
+margin-top:40px;
 }
 
-.why-card{
+.about-card{
 background:#fff;
-padding:25px;
-border:1px solid #e8e8e8;
-border-radius:15px;
-transition:.3s;
+padding:28px;
+border-radius:18px;
+text-align:center;
+border:1px solid #ececec;
+transition:.35s;
+box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
 
-.why-card:hover{
-transform:translateY(-5px);
-box-shadow:0 12px 28px rgba(0,0,0,.08);
+.about-card:hover{
+transform:translateY(-8px);
+box-shadow:0 18px 40px rgba(0,0,0,.10);
+border-color:#0D6EFD;
 }
 
-.why-card h3{
+.about-card i{
+width:70px;
+height:70px;
+line-height:70px;
+font-size:28px;
+border-radius:50%;
+background:#eef5ff;
+color:#0D6EFD;
+margin-bottom:18px;
+transition:.35s;
+}
+
+.about-card:hover i{
+transform:rotateY(180deg);
+background:#0D6EFD;
+color:#fff;
+}
+
+.about-card h3{
 font-size:20px;
 margin-bottom:10px;
-color:#0057D9;
 }
 
-.why-card p{
-font-size:15px;
-line-height:1.7;
+.about-card p{
+font-size:14px;
+line-height:1.8;
 color:#666;
 }
 
-/*========================================
+/*========================
+FAQ
+========================*/
+
+.faq{
+padding:85px 0;
+background:#f7f9fc;
+}
+
+.faq-box{
+max-width:900px;
+margin:auto;
+}
+
+.faq-item{
+background:#fff;
+padding:22px 24px;
+margin-bottom:18px;
+border-radius:16px;
+border:1px solid #ececec;
+transition:.35s;
+cursor:pointer;
+}
+
+.faq-item:hover{
+transform:translateY(-4px);
+border-color:#0D6EFD;
+box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+.faq-item h3{
+font-size:18px;
+margin-bottom:8px;
+}
+
+.faq-item p{
+font-size:14px;
+color:#666;
+line-height:1.8;
+}
+
+/*========================
 CONTACT
-========================================*/
+========================*/
 
 .contact{
-padding:70px 0;
-background:#f8f9fc;
-}
-
-.contact h2{
-text-align:center;
-font-size:30px;
-font-weight:600;
-margin-bottom:35px;
-}
-
-.contact-box{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.contact-box div{
+padding:90px 0;
 background:#fff;
-padding:25px;
-border-radius:15px;
-border:1px solid #e6e6e6;
+}
+
+.contact-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:24px;
+margin-top:40px;
+}
+
+.contact-card{
+background:#fff;
+padding:28px;
 text-align:center;
+border-radius:18px;
+border:1px solid #ececec;
+transition:.35s;
+box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
 
-.contact-box h4{
-font-size:18px;
+.contact-card:hover{
+transform:translateY(-8px);
+box-shadow:0 18px 40px rgba(0,0,0,.10);
+}
+
+.contact-card i{
+font-size:30px;
+color:#0D6EFD;
+margin-bottom:15px;
+}
+
+.contact-card h3{
 margin-bottom:12px;
-color:#0057D9;
+font-size:19px;
 }
 
-.contact-box a{
+.contact-card a,
+.contact-card p{
+font-size:15px;
 text-decoration:none;
-color:#333;
-font-size:16px;
+color:#555;
 word-break:break-word;
 }
 
-/*========================================
+.contact-card a:hover{
+color:#0D6EFD;
+}
+
+/*========================
+FLOATING BUTTONS
+========================*/
+
+.call-float,
+.whatsapp-float,
+#topBtn{
+
+position:fixed;
+
+right:18px;
+
+width:58px;
+
+height:58px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:24px;
+
+text-decoration:none;
+
+color:#fff;
+
+box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+transition:.35s;
+
+z-index:999;
+
+}
+
+.call-float{
+
+bottom:165px;
+
+background:#0D6EFD;
+
+}
+
+.whatsapp-float{
+
+bottom:95px;
+
+background:#25D366;
+
+animation:pulse 2s infinite;
+
+}
+
+#topBtn{
+
+bottom:25px;
+
+background:#111;
+
+border:none;
+
+cursor:pointer;
+
+display:none;
+
+}
+
+@keyframes pulse{
+
+0%{transform:scale(1);}
+
+50%{transform:scale(1.08);}
+
+100%{transform:scale(1);}
+
+}
+
+.call-float:hover,
+.whatsapp-float:hover,
+#topBtn:hover{
+
+transform:translateY(-5px);
+
+}
+
+/*========================
 FOOTER
-========================================*/
+========================*/
 
 footer{
-background:#0f172a;
+background:#111827;
 color:#fff;
-padding:25px 15px;
+padding:60px 20px 35px;
 text-align:center;
+}
+
+footer h3{
+font-size:28px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+footer p{
+font-size:15px;
+color:#d6d6d6;
+margin:8px 0;
+line-height:1.7;
+}
+
+/*========================
+SCROLL ANIMATION
+========================*/
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:all .8s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/*========================
+LOADING ANIMATION
+========================*/
+
+@keyframes floatUp{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+.hero-box,
+.route-card,
+.car-card,
+.about-card,
+.contact-card,
+.faq-item{
+
+animation:floatUp 6s ease-in-out infinite;
+
+}
+
+/*========================
+SCROLLBAR
+========================*/
+
+::-webkit-scrollbar{
+width:9px;
+}
+
+::-webkit-scrollbar-track{
+background:#f2f2f2;
+}
+
+::-webkit-scrollbar-thumb{
+background:#0D6EFD;
+border-radius:50px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+background:#0a58ca;
+}
+
+/*========================
+MOBILE MENU
+========================*/
+
+@media(max-width:991px){
+
+#menuBtn{
+display:block;
+}
+
+#navbar{
+
+position:absolute;
+top:74px;
+left:0;
+width:100%;
+
+background:#fff;
+
+display:none;
+
+flex-direction:column;
+
+padding:20px;
+
+box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+#navbar.active{
+display:flex;
+}
+
+#navbar a{
+padding:12px 0;
+border-bottom:1px solid #eee;
+}
+
+.form-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.hero h1{
+font-size:34px;
+}
+
+}
+
+/*========================
+MOBILE
+========================*/
+
+@media(max-width:768px){
+
+.hero{
+padding-top:105px;
+padding-bottom:45px;
+}
+
+.hero-box{
+padding:22px;
+border-radius:18px;
+}
+
+.hero h1{
+font-size:28px;
+line-height:1.3;
+}
+
+.hero p{
+font-size:15px;
+margin-bottom:25px;
+}
+
+.trip-tabs{
+overflow-x:auto;
+flex-wrap:nowrap;
+padding-bottom:5px;
+}
+
+.trip-tabs::-webkit-scrollbar{
+display:none;
+}
+
+.trip-btn{
+white-space:nowrap;
+padding:11px 18px;
+font-size:14px;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.routes,
+.fleet,
+.about,
+.faq,
+.contact{
+padding:60px 0;
+}
+
+.routes h2,
+.fleet h2,
+.about h2,
+.faq h2,
+.contact h2{
+font-size:28px;
+}
+
+.section-text{
+font-size:14px;
+margin-bottom:28px;
+}
+
+.call-float,
+.whatsapp-float,
+#topBtn{
+
+width:54px;
+height:54px;
+right:15px;
+
+}
+
+.call-float{
+bottom:150px;
+}
+
+.whatsapp-float{
+bottom:85px;
+}
+
+#topBtn{
+bottom:20px;
+}
+
+footer h3{
+font-size:22px;
 }
 
 footer p{
 font-size:14px;
-letter-spacing:.3px;
-}
-
-/*========================================
-RESPONSIVE
-========================================*/
-
-@media(max-width:992px){
-
-.search-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-}
-
-@media(max-width:768px){
-
-header .container{
-flex-direction:column;
-gap:15px;
-}
-
-nav{
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
-}
-
-.logo{
-font-size:22px;
-}
-
-.booking-box{
-padding:20px;
-}
-
-.tabs{
-overflow-x:auto;
-white-space:nowrap;
-}
-
-.tabs button{
-flex:0 0 auto;
-}
-
-.search-grid{
-grid-template-columns:1fr;
-}
-
-.popular-routes h2,
-.fleet h2,
-.why-us h2,
-.contact h2{
-font-size:24px;
-}
-
-.route-card,
-.car-card,
-.why-card,
-.contact-box div{
-border-radius:12px;
-}
-
-.car-card img{
-height:170px;
-}
-
-#searchBtn{
-font-size:15px;
 }
 
 }
