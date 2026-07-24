@@ -390,150 +390,139 @@ return;
 
 }
 
-
 // ================================
-// ADVANCED FARE CALCULATION
+// KM BASED FARE ENGINE
 // ================================
 
 
-let routeFare = 0;
+// DISTANCE DATABASE
+
+const distanceData = {
+
+"indore-ujjain":55,
+"indore-omkareshwar":80,
+"indore-maheshwar":95,
+"indore-dewas":40,
+"indore-bhopal":190,
+"indore-mhow":25,
+"indore-mandu":95
+
+};
 
 
-let pickupCity = pickup.toLowerCase();
-let dropCity = drop.toLowerCase();
+
+let fromCity = pickup.toLowerCase();
+let toCity = drop.toLowerCase();
 
 
-// ROUTE DATABASE
 
-if(
-pickupCity.includes("indore") &&
-dropCity.includes("ujjain")
-){
+let distance = 0;
 
-routeFare = 1800;
 
-}
 
-else if(
-pickupCity.includes("indore") &&
-dropCity.includes("omkareshwar")
-){
+let route1 = fromCity + "-" + toCity;
+let route2 = toCity + "-" + fromCity;
 
-routeFare = 2800;
 
-}
 
-else if(
-pickupCity.includes("indore") &&
-dropCity.includes("maheshwar")
-){
+if(distanceData[route1]){
 
-routeFare = 2500;
-
-}
-
-else if(
-pickupCity.includes("indore") &&
-dropCity.includes("dewas")
-){
-
-routeFare = 1200;
+distance = distanceData[route1];
 
 }
 
-else if(
-pickupCity.includes("indore") &&
-dropCity.includes("bhopal")
-){
+else if(distanceData[route2]){
 
-routeFare = 3500;
-
-}
-
-else if(
-pickupCity.includes("indore") &&
-dropCity.includes("mandu")
-){
-
-routeFare = 3000;
+distance = distanceData[route2];
 
 }
 
 else{
 
-routeFare = 2000;
+// Default distance
+
+distance = 50;
 
 }
 
 
 
-// CAR MULTIPLIER
-
-let carType = "Swift Dzire";
-
-let carFare = routeFare;
+// CAR RATE PER KM
 
 
+const carRates = {
 
-// ROUND TRIP
+"Swift Dzire":14,
+
+"Ertiga":17,
+
+"Innova":20,
+
+"Crysta":24,
+
+"Tempo Traveller":35
+
+};
+
+
+
+// TRIP MULTIPLIER
+
+
+let tripMultiplier = 1;
+
 
 if(selectedTrip==="round"){
 
-carFare = routeFare * 2;
+tripMultiplier = 2;
 
 }
 
 
 
-// AIRPORT
-
-if(selectedTrip==="airport"){
-
-carFare = routeFare + 500;
-
-}
+// SAVE DISTANCE
 
 
+localStorage.setItem(
+"distance",
+distance
+);
 
-// RENTAL PACKAGE
-
-if(selectedTrip==="rental"){
 
 
-if(packageName.includes("1 Hour")){
+localStorage.setItem(
+"tripType",
+selectedTrip
+);
 
-carFare = 500;
 
-}
 
-else if(packageName.includes("2 Hour")){
+// BASE FARE DZIRE
 
-carFare = 900;
 
-}
+let baseFare =
+distance *
+carRates["Swift Dzire"] *
+tripMultiplier;
 
-else if(packageName.includes("4 Hour")){
 
-carFare = 1600;
 
-}
+// MINIMUM FARE
 
-else if(packageName.includes("8 Hour")){
 
-carFare = 2800;
+if(baseFare < 1800){
 
-}
-
-else if(packageName.includes("12 Hour")){
-
-carFare = 4000;
-
-}
+baseFare = 1800;
 
 }
 
 
-// SAVE BASE FARE
+
+localStorage.setItem(
+"fare",
+baseFare
+);
+  
 
 localStorage.setItem(
 "baseFare",
