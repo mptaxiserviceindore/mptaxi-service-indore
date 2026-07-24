@@ -1,7 +1,7 @@
-/* ===================================
-   MP TAXI SERVICE
-   FINAL STYLE.CSS - PART 1
-=================================== */
+/*========================================
+MP TAXI SERVICE
+style.css - Part 1
+========================================*/
 
 *{
 margin:0;
@@ -15,973 +15,439 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#f5f5f5;
+background:#f4f6f9;
 color:#222;
-line-height:1.6;
 overflow-x:hidden;
 }
 
 .container{
-width:90%;
-max-width:1200px;
+width:92%;
+max-width:1250px;
 margin:auto;
 }
 
 /* HEADER */
 
 header{
-
-position:fixed;
-
+position:sticky;
 top:0;
-
-left:0;
-
-width:100%;
-
-background:#111;
-
-padding:18px 0;
-
-z-index:9999;
-
-box-shadow:0 5px 20px rgba(0,0,0,.25);
-
+background:#fff;
+z-index:999;
+box-shadow:0 2px 15px rgba(0,0,0,.08);
 }
 
 header .container{
-
 display:flex;
-
 justify-content:space-between;
-
 align-items:center;
-
+padding:18px 0;
 }
 
 .logo{
-
-font-size:28px;
-
+font-size:26px;
 font-weight:700;
-
-color:#FFD700;
-
+color:#0057D9;
 }
 
 nav{
-
 display:flex;
-
-gap:25px;
-
+gap:35px;
 }
 
 nav a{
-
-color:#fff;
-
 text-decoration:none;
-
+color:#333;
+font-size:15px;
 font-weight:500;
-
 transition:.3s;
-
 }
 
 nav a:hover{
-
-color:#FFD700;
-
+color:#0057D9;
 }
 
 /* HERO */
 
 .hero{
-
-height:100vh;
-
-background:
-
-linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.60)),
-
-url("images/hero.jpg") center center/cover no-repeat;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-text-align:center;
-
-padding:20px;
-
+padding:60px 0;
+background:#eef4ff;
 }
 
-.hero-content h1{
-
-font-size:58px;
-
-color:#fff;
-
-margin-bottom:20px;
-
-}
-
-.hero-content p{
-
-font-size:22px;
-
-color:#eee;
-
-margin-bottom:35px;
-
-}
-
-.hero-buttons{
-
-display:flex;
-
-justify-content:center;
-
-gap:20px;
-
-flex-wrap:wrap;
-
-}
-
-.call-btn,
-
-.whatsapp-btn{
-
-padding:16px 35px;
-
-border-radius:10px;
-
-font-size:18px;
-
-font-weight:600;
-
-text-decoration:none;
-
-transition:.3s;
-
-}
-
-.call-btn{
-
-background:#FFD700;
-
-color:#111;
-
-}
-
-.whatsapp-btn{
-
-background:#25D366;
-
-color:white;
-
-}
-
-.call-btn:hover,
-
-.whatsapp-btn:hover{
-
-transform:translateY(-4px);
-
-}
-
-/* BOOKING */
-
-.booking-section{
-
-padding:90px 20px;
-
+.booking-box{
 background:#fff;
-
-}
-
-.booking-card{
-
-max-width:900px;
-
-margin:auto;
-
-background:#fff;
-
-padding:35px;
-
 border-radius:18px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.10);
-
+padding:35px;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
 }
 
-.booking-card h2{
+/* TABS */
 
-text-align:center;
-
-font-size:36px;
-
+.tabs{
+display:flex;
+gap:12px;
 margin-bottom:30px;
-
+flex-wrap:wrap;
 }
 
-.booking-card input,
-
-.booking-card select,
-
-.booking-card textarea{
-
-width:100%;
-
-padding:15px;
-
-margin-bottom:18px;
-
-border:1px solid #ddd;
-
-border-radius:8px;
-
-font-size:17px;
-
-outline:none;
-
-transition:.3s;
-
-}
-
-.booking-card input:focus,
-
-.booking-card select:focus,
-
-.booking-card textarea:focus{
-
-border-color:#FFD700;
-
-box-shadow:0 0 8px rgba(255,215,0,.3);
-
-}
-
-.booking-card textarea{
-
-height:110px;
-
-resize:none;
-
-}
-
-.booking-card button{
-
-width:100%;
-
-padding:18px;
-
-background:#25D366;
-
-color:white;
-
+.tabs button{
+padding:12px 22px;
 border:none;
+background:#eef3ff;
+border-radius:8px;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
 
+.tabs button.active{
+background:#0057D9;
+color:#fff;
+}
+
+/* SEARCH */
+
+.search-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:18px;
+align-items:end;
+}
+
+.field label{
+display:block;
+font-size:13px;
+font-weight:600;
+margin-bottom:8px;
+color:#555;
+}
+
+.field input,
+.field select{
+width:100%;
+height:52px;
+padding:0 15px;
+border:1px solid #d8d8d8;
 border-radius:10px;
-
-font-size:20px;
-
-font-weight:700;
-
-cursor:pointer;
-
+font-size:15px;
+outline:none;
 transition:.3s;
-
+background:#fff;
 }
 
-.booking-card button:hover{
-
-background:#1ebc5b;
-
-}
-/* ===================================
-   LOCAL RENTAL
-=================================== */
-
-.rental-section{
-
-padding:80px 20px;
-
-background:#f8f8f8;
-
+.field input:focus,
+.field select:focus{
+border-color:#0057D9;
 }
 
-.rental-section h2{
-
-text-align:center;
-
-font-size:38px;
-
-margin-bottom:40px;
-
-}
-
-.rental-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-gap:20px;
-
-}
-
-.package-card{
-
-background:white;
-
-padding:25px;
-
-border-radius:15px;
-
-text-align:center;
-
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-
-transition:.3s;
-
+#searchBtn{
+width:100%;
+height:52px;
+border:none;
+border-radius:10px;
+background:#0057D9;
+color:#fff;
+font-size:16px;
+font-weight:600;
 cursor:pointer;
-
+transition:.3s;
 }
 
-.package-card:hover{
+#searchBtn:hover{
+background:#0045ad;
+}
+/*========================================
+POPULAR ROUTES
+========================================*/
 
-transform:translateY(-8px);
-
-border:2px solid #FFD700;
-
+.popular-routes{
+padding:70px 0;
+background:#fff;
 }
 
-.package-card h3{
-
-font-size:26px;
-
-margin-bottom:10px;
-
-color:#111;
-
-}
-
-.package-card p{
-
-font-size:18px;
-
-color:#666;
-
-}
-
-/* ===================================
-   POPULAR ROUTES
-=================================== */
-
-.routes-section{
-
-padding:80px 20px;
-
-background:white;
-
-}
-
-.routes-section h2{
-
+.popular-routes h2{
+font-size:30px;
+font-weight:600;
+margin-bottom:30px;
 text-align:center;
-
-font-size:38px;
-
-margin-bottom:40px;
-
+color:#222;
 }
 
-.routes-grid{
-
+.route-grid{
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:25px;
-
+gap:20px;
 }
 
 .route-card{
-
 background:#fff;
-
-padding:25px;
-
-border-radius:15px;
-
-text-align:center;
-
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-
+border:1px solid #e6e6e6;
+border-radius:14px;
+padding:22px;
 transition:.3s;
-
+cursor:pointer;
 }
 
 .route-card:hover{
-
-transform:translateY(-8px);
-
-border-bottom:4px solid #FFD700;
-
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+border-color:#0057D9;
 }
 
-/* ===================================
-   FLEET
-=================================== */
-
-.fleet-section{
-
-padding:80px 20px;
-
-background:#f7f7f7;
-
+.route-card h3{
+font-size:18px;
+margin-bottom:8px;
+font-weight:600;
 }
 
-.fleet-section h2{
-
-text-align:center;
-
-font-size:38px;
-
-margin-bottom:40px;
-
-}
-
-.fleet-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:25px;
-
-}
-
-.fleet-card{
-
-background:white;
-
-border-radius:15px;
-
-overflow:hidden;
-
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-
-transition:.3s;
-
-}
-
-.fleet-card:hover{
-
-transform:translateY(-8px);
-
-}
-
-.fleet-card img{
-
-width:100%;
-
-height:220px;
-
-object-fit:cover;
-
-}
-
-.fleet-card h3{
-
-padding-top:15px;
-
-text-align:center;
-
-font-size:24px;
-
-}
-
-.fleet-card p{
-
-padding:15px;
-
-text-align:center;
-
+.route-card p{
+font-size:14px;
 color:#666;
-
 }
 
-/* ===================================
-   WHY CHOOSE US
-=================================== */
+/*========================================
+AVAILABLE CARS
+========================================*/
 
-.why-section{
-
-padding:80px 20px;
-
-background:#FFD700;
-
+.fleet{
+padding:70px 0;
+background:#f8f9fc;
 }
 
-.why-section h2{
-
+.fleet h2{
+font-size:30px;
+font-weight:600;
 text-align:center;
+margin-bottom:35px;
+}
 
-font-size:38px;
+.car-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
 
-margin-bottom:40px;
+.car-card{
+background:#fff;
+border-radius:16px;
+overflow:hidden;
+border:1px solid #ececec;
+transition:.3s;
+}
 
+.car-card:hover{
+transform:translateY(-6px);
+box-shadow:0 12px 28px rgba(0,0,0,.10);
+}
+
+.car-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.car-card h3{
+font-size:20px;
+padding:18px 18px 8px;
+font-weight:600;
+}
+
+.car-card p{
+padding:0 18px 18px;
+font-size:15px;
+color:#666;
+}
+
+.car-card button{
+width:calc(100% - 36px);
+margin:0 18px 20px;
+height:48px;
+border:none;
+border-radius:10px;
+background:#0057D9;
+color:#fff;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.car-card button:hover{
+background:#0045ad;
+}
+/*========================================
+WHY CHOOSE US
+========================================*/
+
+.why-us{
+padding:70px 0;
+background:#fff;
+}
+
+.why-us h2{
+text-align:center;
+font-size:30px;
+font-weight:600;
+margin-bottom:35px;
+color:#222;
 }
 
 .why-grid{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:20px;
-
-}
-
-.why-grid div{
-
-background:white;
-
-padding:25px;
-
-border-radius:12px;
-
-text-align:center;
-
-font-weight:600;
-
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-
-}
-
-/* ===================================
-   ABOUT
-=================================== */
-
-.about-section{
-
-padding:80px 20px;
-
-background:white;
-
-text-align:center;
-
-}
-
-.about-section h2{
-
-font-size:38px;
-
-margin-bottom:25px;
-
-}
-
-.about-section p{
-
-max-width:900px;
-
-margin:auto;
-
-font-size:18px;
-
-line-height:1.9;
-
-color:#555;
-
-}
-/* ===================================
-   GOOGLE MAP
-=================================== */
-
-.map-section{
-
-padding:80px 20px;
-
-background:#f5f5f5;
-
-}
-
-.map-section h2{
-
-text-align:center;
-
-font-size:38px;
-
-margin-bottom:40px;
-
-}
-
-.map-box{
-
-border-radius:18px;
-
-overflow:hidden;
-
-box-shadow:0 8px 25px rgba(0,0,0,.12);
-
-}
-
-/* ===================================
-   CONTACT
-=================================== */
-
-.contact-section{
-
-padding:80px 20px;
-
-background:#111;
-
-color:white;
-
-}
-
-.contact-section h2{
-
-text-align:center;
-
-font-size:38px;
-
-margin-bottom:40px;
-
-color:#FFD700;
-
-}
-
-.contact-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
 gap:25px;
-
 }
 
-.contact-card{
-
-background:#1b1b1b;
-
-padding:30px;
-
+.why-card{
+background:#fff;
+padding:25px;
+border:1px solid #e8e8e8;
 border-radius:15px;
-
-text-align:center;
-
 transition:.3s;
-
 }
 
-.contact-card:hover{
-
-transform:translateY(-8px);
-
+.why-card:hover{
+transform:translateY(-5px);
+box-shadow:0 12px 28px rgba(0,0,0,.08);
 }
 
-.contact-card h3{
-
-margin-bottom:15px;
-
-color:#FFD700;
-
+.why-card h3{
+font-size:20px;
+margin-bottom:10px;
+color:#0057D9;
 }
 
-.contact-card a{
+.why-card p{
+font-size:15px;
+line-height:1.7;
+color:#666;
+}
 
-color:white;
+/*========================================
+CONTACT
+========================================*/
 
+.contact{
+padding:70px 0;
+background:#f8f9fc;
+}
+
+.contact h2{
+text-align:center;
+font-size:30px;
+font-weight:600;
+margin-bottom:35px;
+}
+
+.contact-box{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.contact-box div{
+background:#fff;
+padding:25px;
+border-radius:15px;
+border:1px solid #e6e6e6;
+text-align:center;
+}
+
+.contact-box h4{
+font-size:18px;
+margin-bottom:12px;
+color:#0057D9;
+}
+
+.contact-box a{
 text-decoration:none;
-
-font-size:18px;
-
+color:#333;
+font-size:16px;
+word-break:break-word;
 }
 
-.contact-card p{
-
-font-size:18px;
-
-}
-
-/* ===================================
-   FOOTER
-=================================== */
+/*========================================
+FOOTER
+========================================*/
 
 footer{
-
-background:#000;
-
-color:white;
-
+background:#0f172a;
+color:#fff;
+padding:25px 15px;
 text-align:center;
-
-padding:40px 20px;
-
-}
-
-footer h2{
-
-color:#FFD700;
-
-margin-bottom:15px;
-
-font-size:28px;
-
 }
 
 footer p{
-
-margin:8px 0;
-
-color:#ddd;
-
+font-size:14px;
+letter-spacing:.3px;
 }
 
-/* ===================================
-   FLOATING BUTTONS
-=================================== */
+/*========================================
+RESPONSIVE
+========================================*/
 
-.floating-call,
-.floating-whatsapp{
+@media(max-width:992px){
 
-position:fixed;
-
-bottom:20px;
-
-width:60px;
-
-height:60px;
-
-border-radius:50%;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:28px;
-
-text-decoration:none;
-
-box-shadow:0 8px 20px rgba(0,0,0,.30);
-
-z-index:9999;
-
-transition:.3s;
-
+.search-grid{
+grid-template-columns:repeat(2,1fr);
 }
 
-.floating-call{
-
-left:20px;
-
-background:#FFD700;
-
-color:#111;
-
 }
-
-.floating-whatsapp{
-
-right:20px;
-
-background:#25D366;
-
-color:white;
-
-}
-
-.floating-call:hover,
-.floating-whatsapp:hover{
-
-transform:scale(1.1);
-
-}
-
-/* ===================================
-   MOBILE RESPONSIVE
-=================================== */
 
 @media(max-width:768px){
 
 header .container{
-
 flex-direction:column;
-
+gap:15px;
 }
 
 nav{
-
 flex-wrap:wrap;
-
 justify-content:center;
-
-margin-top:15px;
-
+gap:15px;
 }
 
-.hero{
-
-height:auto;
-
-padding:150px 20px 80px;
-
+.logo{
+font-size:22px;
 }
 
-.hero-content h1{
-
-font-size:34px;
-
-}
-
-.hero-content p{
-
-font-size:18px;
-
-}
-
-.hero-buttons{
-
-flex-direction:column;
-
-}
-
-.call-btn,
-.whatsapp-btn{
-
-width:100%;
-
-text-align:center;
-
-}
-
-.booking-card{
-
+.booking-box{
 padding:20px;
-
 }
 
-.routes-grid,
-.rental-grid,
-.fleet-grid,
-.why-grid,
-.contact-grid{
+.tabs{
+overflow-x:auto;
+white-space:nowrap;
+}
 
+.tabs button{
+flex:0 0 auto;
+}
+
+.search-grid{
 grid-template-columns:1fr;
-
 }
 
-.fleet-card img{
-
-height:200px;
-
-}
-
-.floating-call,
-.floating-whatsapp{
-
-width:55px;
-
-height:55px;
-
+.popular-routes h2,
+.fleet h2,
+.why-us h2,
+.contact h2{
 font-size:24px;
-
 }
 
-}
-/* ===================================
-   SEARCH SUGGESTIONS
-=================================== */
-
-.input-group{
-position:relative;
+.route-card,
+.car-card,
+.why-card,
+.contact-box div{
+border-radius:12px;
 }
 
-.suggestion-box{
-
-position:absolute;
-
-top:100%;
-
-left:0;
-
-width:100%;
-
-background:#fff;
-
-border:1px solid #ddd;
-
-border-top:none;
-
-border-radius:0 0 10px 10px;
-
-box-shadow:0 8px 20px rgba(0,0,0,.12);
-
-display:none;
-
-max-height:250px;
-
-overflow-y:auto;
-
-z-index:9999;
-
+.car-card img{
+height:170px;
 }
 
-.suggestion-item{
-
-padding:14px 16px;
-
-font-size:16px;
-
-cursor:pointer;
-
-transition:.2s;
-
-border-bottom:1px solid #f1f1f1;
-
-}
-
-.suggestion-item:last-child{
-
-border-bottom:none;
-
-}
-
-.suggestion-item:hover{
-
-background:#FFD700;
-
-color:#111;
-
-font-weight:600;
-
-}
-
-/* Mobile */
-
-@media(max-width:768px){
-
-.suggestion-box{
-
-max-height:220px;
-
-}
-
-.suggestion-item{
-
-padding:16px;
-
-font-size:17px;
-
+#searchBtn{
+font-size:15px;
 }
 
 }
