@@ -391,132 +391,159 @@ return;
 }
 
 
-
-// FARE CALCULATION
-
-
-let fare=1500;
+// ================================
+// ADVANCED FARE CALCULATION
+// ================================
 
 
-
-let p=pickup.toLowerCase();
-
-let d=drop.toLowerCase();
+let routeFare = 0;
 
 
+let pickupCity = pickup.toLowerCase();
+let dropCity = drop.toLowerCase();
+
+
+// ROUTE DATABASE
 
 if(
-p.includes("indore") &&
-d.includes("ujjain")
+pickupCity.includes("indore") &&
+dropCity.includes("ujjain")
 ){
 
-fare=1800;
+routeFare = 1800;
 
 }
 
 else if(
-p.includes("indore") &&
-d.includes("omkareshwar")
+pickupCity.includes("indore") &&
+dropCity.includes("omkareshwar")
 ){
 
-fare=2800;
+routeFare = 2800;
 
 }
 
 else if(
-p.includes("indore") &&
-d.includes("maheshwar")
+pickupCity.includes("indore") &&
+dropCity.includes("maheshwar")
 ){
 
-fare=2500;
+routeFare = 2500;
 
 }
 
 else if(
-p.includes("indore") &&
-d.includes("dewas")
+pickupCity.includes("indore") &&
+dropCity.includes("dewas")
 ){
 
-fare=1200;
+routeFare = 1200;
 
 }
 
 else if(
-p.includes("indore") &&
-d.includes("bholpal")
+pickupCity.includes("indore") &&
+dropCity.includes("bhopal")
 ){
 
-fare=2500;
+routeFare = 3500;
+
+}
+
+else if(
+pickupCity.includes("indore") &&
+dropCity.includes("mandu")
+){
+
+routeFare = 3000;
+
+}
+
+else{
+
+routeFare = 2000;
 
 }
 
 
 
-// ROUND TRIP EXTRA
+// CAR MULTIPLIER
 
+let carType = "Swift Dzire";
+
+let carFare = routeFare;
+
+
+
+// ROUND TRIP
 
 if(selectedTrip==="round"){
 
-fare=fare*2;
+carFare = routeFare * 2;
 
 }
 
 
 
-// AIRPORT CHARGE
-
+// AIRPORT
 
 if(selectedTrip==="airport"){
 
-fare=fare+300;
+carFare = routeFare + 500;
 
 }
 
 
 
-// RENTAL PACKAGE PRICE
-
+// RENTAL PACKAGE
 
 if(selectedTrip==="rental"){
 
 
 if(packageName.includes("1 Hour")){
 
-fare=500;
+carFare = 500;
 
 }
 
 else if(packageName.includes("2 Hour")){
 
-fare=900;
+carFare = 900;
 
 }
 
 else if(packageName.includes("4 Hour")){
 
-fare=1600;
+carFare = 1600;
 
 }
 
 else if(packageName.includes("8 Hour")){
 
-fare=2800;
+carFare = 2800;
 
 }
 
 else if(packageName.includes("12 Hour")){
 
-fare=4000;
+carFare = 4000;
 
 }
 
 }
 
 
+// SAVE BASE FARE
 
-// SAVE DATA
+localStorage.setItem(
+"baseFare",
+carFare
+);
 
-
+localStorage.setItem(
+"fare",
+carFare
+);
 localStorage.setItem("tripType",selectedTrip);
 
 localStorage.setItem("pickup",pickup);
