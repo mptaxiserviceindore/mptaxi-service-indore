@@ -1,30 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MP TAXI SERVICE INDORE | Taxi, Cab & Tempo Traveller Booking</title>
-
-<meta name="description" content="24x7 Taxi Service in Indore. Local Rental, Airport Taxi, One Way, Round Trip, Outstation Taxi & Tempo Traveller Booking.">
-
-<meta name="keywords" content="Taxi Service Indore, Cab Booking, Airport Taxi, Ujjain Taxi, Tempo Traveller, Local Rental">
-
-<meta name="author" content="MP TAXI SERVICE INDORE">
-
-<meta name="robots" content="index,follow">
-
-<meta name="theme-color" content="#111111">
+<title>MP Taxi Service</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -41,17 +26,13 @@
 
 <nav>
 
-<a href="#home">Home</a>
+<a href="#">Home</a>
 
-<a href="#booking">Book Taxi</a>
+<a href="#">About</a>
 
-<a href="#rental">Local Rental</a>
+<a href="#">Fleet</a>
 
-<a href="#routes">Routes</a>
-
-<a href="#fleet">Fleet</a>
-
-<a href="#contact">Contact</a>
+<a href="#">Contact</a>
 
 </nav>
 
@@ -59,294 +40,78 @@
 
 </header>
 
-<section id="home" class="hero">
+<section class="hero">
 
-<div class="hero-overlay">
+<div class="container">
 
-<div class="hero-content">
+<div class="booking-box">
 
-<h1>
+<div class="tabs">
 
-24×7 TAXI SERVICE INDORE
+<button class="active">One Way</button>
 
-</h1>
+<button>Round Trip</button>
 
-<p>
+<button>Airport</button>
 
-Local Rental • Airport Transfer • One Way • Round Trip • Outstation • Tempo Traveller
-
-</p>
-
-<div class="hero-buttons">
-
-<a href="tel:7000688407" class="call-btn">
-
-📞 CALL NOW
-
-</a>
-
-<a href="https://wa.me/917000688407" class="whatsapp-btn">
-
-💬 WHATSAPP
-
-</a>
+<button>Local Rental</button>
 
 </div>
 
-</div>
+<div class="search-grid">
 
-</div>
+<div class="field">
 
-</section>
-
-<section id="booking" class="booking-section">
-
-<div class="booking-card">
-
-<h2>
-
-Book Your Taxi
-
-</h2>
-
-<form id="bookingForm">
-
-<input
-type="text"
-id="customerName"
-placeholder="Full Name"
-required>
-
-<input
-type="tel"
-id="mobile"
-placeholder="Mobile Number"
-required>
+<label>FROM</label>
 
 <input
 type="text"
 id="pickup"
-placeholder="Pickup Location"
-required>
+placeholder="Pickup City">
+
+</div>
+
+<div class="field">
+
+<label>TO</label>
 
 <input
 type="text"
 id="drop"
-placeholder="Drop Location"
-required>
-
-<select id="tripType">
-
-<option value="">Select Trip Type</option>
-
-<option>Local Rental</option>
-
-<option>Airport Pickup</option>
-
-<option>Airport Drop</option>
-
-<option>One Way</option>
-
-<option>Round Trip</option>
-
-<option>Outstation</option>
-
-<option>Corporate Booking</option>
-
-<option>Tempo Traveller</option>
-
-</select>
-
-  <div id="localPackageBox" style="display:none;">
-
-<label>
-
-Local Rental Package
-
-</label>
-
-<select id="localPackage">
-
-<option value="">Select Package</option>
-
-<option>1 Hour / 10 KM</option>
-
-<option>2 Hours / 20 KM</option>
-
-<option>3 Hours / 30 KM</option>
-
-<option>4 Hours / 40 KM</option>
-
-<option>5 Hours / 50 KM</option>
-
-<option>6 Hours / 60 KM</option>
-
-<option>8 Hours / 80 KM</option>
-
-<option>10 Hours / 100 KM</option>
-
-<option>12 Hours / 120 KM</option>
-
-</select>
+placeholder="Drop City">
 
 </div>
 
-<label>
+<div class="field">
 
-Pickup Date
-
-</label>
+<label>DEPARTURE</label>
 
 <input
 type="date"
-id="pickupDate"
-required>
+id="date">
 
-<label>
+</div>
 
-Pickup Time
+<div class="field">
 
-</label>
+<label>TIME</label>
 
 <input
 type="time"
-id="pickupTime"
-required>
-
-<div id="returnDateBox" style="display:none;">
-
-<label>
-
-Return Date
-
-</label>
-
-<input
-type="date"
-id="returnDate">
+id="time">
 
 </div>
 
-<label>
+<div class="field">
 
-Select Vehicle
+<button id="searchBtn">
 
-</label>
-
-<select id="vehicle">
-
-<option>Sedan</option>
-
-<option>Ertiga</option>
-
-<option>SUV</option>
-
-<option>Innova</option>
-
-<option>Innova Crysta</option>
-
-<option>Tempo Traveller</option>
-
-</select>
-
-<label>
-
-Passengers
-
-</label>
-
-<select id="passengers">
-
-<option>1 Passenger</option>
-
-<option>2 Passengers</option>
-
-<option>3 Passengers</option>
-
-<option>4 Passengers</option>
-
-<option>5 Passengers</option>
-
-<option>6 Passengers</option>
-
-<option>7+ Passengers</option>
-
-</select>
-
-<textarea
-id="note"
-placeholder="Special Instructions (Optional)">
-</textarea>
-
-<button
-type="button"
-id="bookNow">
-
-BOOK NOW ON WHATSAPP
+SEARCH CABS
 
 </button>
 
-</form>
-
 </div>
 
-</section>
-
-<section id="rental" class="rental-section">
-
-<div class="container">
-
-<h2>
-
-Local Rental Packages
-
-</h2>
-
-<div class="rental-grid">
-
-<div class="package-card">
-<h3>1 Hour</h3>
-<p>10 KM</p>
-</div>
-
-<div class="package-card">
-<h3>2 Hours</h3>
-<p>20 KM</p>
-</div>
-
-<div class="package-card">
-<h3>3 Hours</h3>
-<p>30 KM</p>
-</div>
-
-<div class="package-card">
-<h3>4 Hours</h3>
-<p>40 KM</p>
-</div>
-
-<div class="package-card">
-<h3>5 Hours</h3>
-<p>50 KM</p>
-</div>
-
-<div class="package-card">
-<h3>6 Hours</h3>
-<p>60 KM</p>
-</div>
-
-<div class="package-card">
-<h3>8 Hours</h3>
-<p>80 KM</p>
-</div>
-
-<div class="package-card">
-<h3>10 Hours</h3>
-<p>100 KM</p>
-</div>
-
-<div class="package-card">
-<h3>12 Hours</h3>
-<p>120 KM</p>
 </div>
 
 </div>
@@ -354,47 +119,42 @@ Local Rental Packages
 </div>
 
 </section>
-
-  <section id="routes" class="routes-section">
+<section class="popular-routes">
 
 <div class="container">
 
-<h2>
+<h2>Popular Routes</h2>
 
-Popular Taxi Routes
-
-</h2>
-
-<div class="routes-grid">
+<div class="route-grid">
 
 <div class="route-card">
 <h3>Indore → Ujjain</h3>
-<p>One Way</p>
+<p>One Way • Round Trip</p>
 </div>
 
 <div class="route-card">
 <h3>Indore → Omkareshwar</h3>
-<p>One Way / Round Trip</p>
+<p>One Way • Round Trip</p>
 </div>
 
 <div class="route-card">
 <h3>Indore → Maheshwar</h3>
-<p>One Way / Round Trip</p>
+<p>One Way • Round Trip</p>
 </div>
 
 <div class="route-card">
 <h3>Indore → Bhopal</h3>
-<p>One Way / Round Trip</p>
-</div>
-
-<div class="route-card">
-<h3>Indore → Dewas</h3>
-<p>One Way / Round Trip</p>
+<p>One Way • Round Trip</p>
 </div>
 
 <div class="route-card">
 <h3>Indore Airport</h3>
-<p>Pickup / Drop</p>
+<p>Pickup • Drop</p>
+</div>
+
+<div class="route-card">
+<h3>Indore → Dewas</h3>
+<p>Taxi Available</p>
 </div>
 
 </div>
@@ -403,69 +163,63 @@ Popular Taxi Routes
 
 </section>
 
-<section id="fleet" class="fleet-section">
+<section class="fleet">
 
 <div class="container">
 
-<h2>
+<h2>Available Cars</h2>
 
-Our Fleet
+<div class="car-grid">
 
-</h2>
+<div class="car-card">
 
-<div class="fleet-grid">
+<img src="images/dzire.jpg" alt="Swift Dzire">
 
-<div class="fleet-card">
+<h3>Swift Dzire</h3>
 
-<img src="images/sedan.jpg" alt="Sedan">
+<p>4+1 Seats • AC • 2 Bags</p>
 
-<h3>Sedan</h3>
-
-<p>Swift Dzire / Aura / Amaze</p>
+<button>Book Now</button>
 
 </div>
 
-<div class="fleet-card">
+<div class="car-card">
 
 <img src="images/ertiga.jpg" alt="Ertiga">
 
-<h3>Ertiga</h3>
+<h3>Maruti Ertiga</h3>
 
-<p>6+1 Comfortable Seats</p>
+<p>6+1 Seats • AC • 3 Bags</p>
 
-</div>
-
-<div class="fleet-card">
-
-<img src="images/suv.jpg" alt="SUV">
-
-<h3>SUV</h3>
-
-<p>Bolero / Scorpio</p>
+<button>Book Now</button>
 
 </div>
 
-<div class="fleet-card">
+<div class="car-card">
 
 <img src="images/innova.jpg" alt="Innova">
 
-<h3>Innova</h3>
+<h3>Toyota Innova</h3>
 
-<p>Premium Family Travel</p>
+<p>6+1 Seats • AC • Premium</p>
+
+<button>Book Now</button>
 
 </div>
 
-<div class="fleet-card">
+<div class="car-card">
 
 <img src="images/crysta.jpg" alt="Crysta">
 
 <h3>Innova Crysta</h3>
 
-<p>Luxury Travel</p>
+<p>6+1 Seats • Luxury</p>
+
+<button>Book Now</button>
 
 </div>
 
-<div class="fleet-card">
+<div class="car-card">
 
 <img src="images/tempo.jpg" alt="Tempo Traveller">
 
@@ -473,6 +227,8 @@ Our Fleet
 
 <p>12 / 17 / 20 / 26 Seater</p>
 
+<button>Book Now</button>
+
 </div>
 
 </div>
@@ -480,85 +236,43 @@ Our Fleet
 </div>
 
 </section>
-
-<section class="why-section">
+<section class="why-us">
 
 <div class="container">
 
-<h2>
-
-Why Choose MP Taxi Service?
-
-</h2>
+<h2>Why Choose MP Taxi Service?</h2>
 
 <div class="why-grid">
 
-<div>✅ 24×7 Service</div>
-
-<div>✅ Verified Drivers</div>
-
-<div>✅ Clean Vehicles</div>
-
-<div>✅ Transparent Pricing</div>
-
-<div>✅ GPS Enabled</div>
-
-<div>✅ Safe Family Travel</div>
-
-<div>✅ Airport Specialists</div>
-
-<div>✅ Instant WhatsApp Booking</div>
-
+<div class="why-card">
+<h3>24×7 Service</h3>
+<p>Available day and night for local, airport and outstation taxi bookings.</p>
 </div>
 
+<div class="why-card">
+<h3>Verified Drivers</h3>
+<p>Experienced, verified and professional drivers for safe travel.</p>
 </div>
 
-</section>
-
-<section class="about-section">
-
-<div class="container">
-
-<h2>
-
-About MP Taxi Service
-
-</h2>
-
-<p>
-
-MP Taxi Service Indore provides Local Rental, Airport Taxi,
-One Way, Round Trip, Outstation Taxi and Tempo Traveller
-services across Madhya Pradesh with professional drivers,
-clean vehicles and 24×7 customer support.
-
-</p>
-
-
+<div class="why-card">
+<h3>Clean Vehicles</h3>
+<p>Well-maintained, sanitized and comfortable cars for every trip.</p>
 </div>
 
-</section>
+<div class="why-card">
+<h3>Transparent Pricing</h3>
+<p>No hidden charges. Clear fare before booking.</p>
+</div>
 
-  <section id="map" class="map-section">
+<div class="why-card">
+<h3>Instant WhatsApp Booking</h3>
+<p>Book your cab directly on WhatsApp in one click.</p>
+</div>
 
-<div class="container">
-
-<h2>
-
-Find MP Taxi Service on Google Maps
-
-</h2>
-
-<div class="map-box">
-
-<iframe
-src="https://www.google.com/maps?q=Indore&output=embed"
-width="100%"
-height="450"
-style="border:0;border-radius:15px;"
-loading="lazy"
-allowfullscreen>
-</iframe>
+<div class="why-card">
+<h3>Local & Outstation</h3>
+<p>One Way, Round Trip, Airport Transfer and Local Rental available.</p>
+</div>
 
 </div>
 
@@ -566,63 +280,37 @@ allowfullscreen>
 
 </section>
 
-<section id="contact" class="contact-section">
+<section class="contact">
 
 <div class="container">
 
-<h2>
+<h2>Contact Us</h2>
 
-Contact MP Taxi Service
+<div class="contact-box">
 
-</h2>
+<div>
 
-<div class="contact-grid">
+<h4>Call</h4>
 
-<div class="contact-card">
-
-<h3>📞 Call</h3>
-
-<a href="tel:7000688407">
-
-7000688407
-
-</a>
+<a href="tel:7000688407">7000688407</a>
 
 </div>
 
-<div class="contact-card">
+<div>
 
-<h3>💬 WhatsApp</h3>
+<h4>WhatsApp</h4>
 
-<a href="https://wa.me/917000688407">
-
-Book on WhatsApp
-
-</a>
+<a href="https://wa.me/917000688407">Book on WhatsApp</a>
 
 </div>
 
-<div class="contact-card">
+<div>
 
-<h3>📧 Email</h3>
+<h4>Email</h4>
 
 <a href="mailto:tahirmp09t6478idr@gmail.com">
-
 tahirmp09t6478idr@gmail.com
-
 </a>
-
-</div>
-
-<div class="contact-card">
-
-<h3>📍 Address</h3>
-
-<p>
-
-Indore, Madhya Pradesh
-
-</p>
 
 </div>
 
@@ -636,42 +324,13 @@ Indore, Madhya Pradesh
 
 <div class="container">
 
-<h2>
-
-MP TAXI SERVICE INDORE
-
-</h2>
-
-<p>
-
-24×7 Local Rental | Airport Taxi | One Way | Round Trip | Outstation Taxi | Tempo Traveller
-
-</p>
-
-<p>
-
-© 2025 MP TAXI SERVICE INDORE. All Rights Reserved.
-
-</p>
+<p>© 2025 MP Taxi Service. All Rights Reserved.</p>
 
 </div>
 
 </footer>
 
-<a href="tel:7000688407" class="floating-call">
-
-📞
-
-</a>
-
-<a href="https://wa.me/917000688407" class="floating-whatsapp">
-
-💬
-
-</a>
-
 <script src="script.js"></script>
 
 </body>
-
 </html>
