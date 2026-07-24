@@ -1,173 +1,113 @@
-/* ==========================================
+/*========================================
 MP TAXI SERVICE
-FINAL SCRIPT.JS - PART 1
-========================================== */
+script.js - Part 1
+========================================*/
 
-/* MP Locations Database */
+/* Trip Tabs */
 
-const mpLocations = [
+const tabs = document.querySelectorAll(".tabs button");
+
+tabs.forEach(tab=>{
+
+tab.addEventListener("click",()=>{
+
+tabs.forEach(btn=>btn.classList.remove("active"));
+
+tab.classList.add("active");
+
+});
+
+});
+
+/* MP Location Database */
+
+const locations=[
 
 "Indore",
 "Indore Airport",
 "Indore Railway Station",
 "Rajwada",
-"Khajrana Ganesh Temple",
-"Super Corridor",
 "Vijay Nagar",
-"MR10",
-"Bhanwarkuan",
 "Palasia",
+"MR10",
+"Bhawarkuan",
 "Rau",
 "Mhow",
 "Pithampur",
 
 "Ujjain",
-"Mahakaleshwar Temple",
+"Mahakal Temple",
 "Ujjain Railway Station",
 
 "Omkareshwar",
-"Mamleshwar",
-
 "Maheshwar",
 
 "Dewas",
 
 "Bhopal",
 "Bhopal Airport",
-"Rani Kamlapati Railway Station",
-
-"Sehore",
-"Ashta",
 
 "Ratlam",
-"Ratlam Junction",
 
 "Mandsaur",
 
 "Neemuch",
 
-"Jaora",
+"Gwalior",
 
-"Shajapur",
+"Jabalpur",
 
-"Agar Malwa",
-
-"Susner",
-
-"Sarangpur",
-
-"Shivpuri",
-
-"Guna",
-
-"Ashoknagar",
-
-"Vidisha",
+"Khajuraho",
 
 "Sanchi",
-
-"Raisen",
-
-"Hoshangabad",
-
-"Itarsi",
-
-"Betul",
-
-"Khandwa",
-
-"Burhanpur",
-
-"Khargone",
-
-"Barwani",
-
-"Dhar",
-
-"Mandu",
-
-"Alirajpur",
-
-"Jhabua",
-
-"Badwani",
 
 "Rewa",
 
 "Satna",
 
-"Panna",
+"Burhanpur",
 
-"Khajuraho",
+"Khandwa",
 
-"Chhatarpur",
+"Sehore",
 
-"Tikamgarh",
+"Vidisha",
 
 "Sagar",
 
-"Damoh",
+"Shivpuri",
 
-"Katni",
+"Dhar",
 
-"Jabalpur",
+"Mandu",
 
-"Narsinghpur",
-
-"Seoni",
-
-"Balaghat",
-
-"Mandla",
-
-"Dindori",
-
-"Shahdol",
-
-"Umaria",
-
-"Anuppur",
-
-"Singrauli",
-
-"Sidhi",
-
-"Morena",
-
-"Bhind",
-
-"Gwalior",
-
-"Datia"
+"Barwani"
 
 ];
-/* ==========================================
-FINAL SCRIPT.JS - PART 2
-Smart Search Suggestion
-========================================== */
 
-const pickupInput = document.getElementById("pickup");
-const dropInput = document.getElementById("drop");
+/* Input */
 
-/* Create Suggestion Box */
+const pickup=document.getElementById("pickup");
 
-const pickupList = document.createElement("div");
-pickupList.className = "suggestion-box";
-pickupInput.parentNode.appendChild(pickupList);
+const drop=document.getElementById("drop");
 
-const dropList = document.createElement("div");
-dropList.className = "suggestion-box";
-dropInput.parentNode.appendChild(dropList);
+/* Suggestion Box */
 
-/* Search Function */
+function createSuggestion(input){
 
-function showSuggestions(input, box){
+const box=document.createElement("div");
 
-const value = input.value.toLowerCase().trim();
+box.className="suggestion-box";
+
+input.parentElement.appendChild(box);
+
+input.addEventListener("keyup",()=>{
+
+const value=input.value.toLowerCase();
 
 box.innerHTML="";
 
-if(value.length<1){
+if(value===""){
 
 box.style.display="none";
 
@@ -175,31 +115,21 @@ return;
 
 }
 
-const result = mpLocations.filter(location=>
+const result=locations.filter(item=>
 
-location.toLowerCase().includes(value)
+item.toLowerCase().includes(value)
 
 );
 
-if(result.length===0){
-
-box.style.display="none";
-
-return;
-
-}
-
-box.style.display="block";
-
 result.slice(0,8).forEach(place=>{
 
-const item=document.createElement("div");
+const div=document.createElement("div");
 
-item.className="suggestion-item";
+div.className="suggestion-item";
 
-item.innerHTML=place;
+div.innerText=place;
 
-item.onclick=function(){
+div.onclick=function(){
 
 input.value=place;
 
@@ -207,110 +137,187 @@ box.style.display="none";
 
 };
 
-box.appendChild(item);
+box.appendChild(div);
+
+});
+
+box.style.display=result.length?"block":"none";
+
+});
+
+document.addEventListener("click",(e)=>{
+
+if(!input.parentElement.contains(e.target)){
+
+box.style.display="none";
+
+}
 
 });
 
 }
 
-/* Events */
+createSuggestion(pickup);
 
-pickupInput.addEventListener("keyup",function(){
+createSuggestion(drop);
+/*========================================
+Search Button
+========================================*/
 
-showSuggestions(this,pickupList);
+const searchBtn = document.getElementById("searchBtn");
+
+searchBtn.addEventListener("click", function () {
+
+const pickup = document.getElementById("pickup").value.trim();
+const drop = document.getElementById("drop").value.trim();
+const date = document.getElementById("date").value;
+const time = document.getElementById("time").value;
+
+if (pickup === "") {
+alert("Please enter Pickup Location");
+return;
+}
+
+if (drop === "") {
+alert("Please enter Drop Location");
+return;
+}
+
+if (date === "") {
+alert("Please select Journey Date");
+return;
+}
+
+if (time === "") {
+alert("Please select Pickup Time");
+return;
+}
+
+/* Save Booking Data */
+
+localStorage.setItem("pickup", pickup);
+localStorage.setItem("drop", drop);
+localStorage.setItem("date", date);
+localStorage.setItem("time", time);
+
+/* Demo Fare */
+
+let fare = 0;
+
+if (
+pickup.toLowerCase().includes("indore") &&
+drop.toLowerCase().includes("ujjain")
+) {
+
+fare = 1800;
+
+} else if (
+pickup.toLowerCase().includes("indore") &&
+drop.toLowerCase().includes("omkareshwar")
+) {
+
+fare = 2800;
+
+} else if (
+pickup.toLowerCase().includes("indore") &&
+drop.toLowerCase().includes("maheshwar")
+) {
+
+fare = 2500;
+
+} else if (
+pickup.toLowerCase().includes("indore") &&
+drop.toLowerCase().includes("dewas")
+) {
+
+fare = 1200;
+
+} else {
+
+fare = 1500;
+
+}
+
+localStorage.setItem("fare", fare);
+
+/* Open Results Page */
+
+window.location.href = "results.html";
+
+});
+/*========================================
+RESULTS + BOOKING + WHATSAPP
+script.js - Part 3
+========================================*/
+
+/* Show Search Data on results.html */
+
+if(document.getElementById("pickupText")){
+
+document.getElementById("pickupText").innerText=
+localStorage.getItem("pickup");
+
+document.getElementById("dropText").innerText=
+localStorage.getItem("drop");
+
+document.getElementById("dateText").innerText=
+localStorage.getItem("date");
+
+document.getElementById("timeText").innerText=
+localStorage.getItem("time");
+
+document.getElementById("fareText").innerText=
+"₹ "+localStorage.getItem("fare");
+
+}
+
+/* Book Button */
+
+document.querySelectorAll(".bookNow").forEach(btn=>{
+
+btn.addEventListener("click",function(){
+
+const car=this.dataset.car;
+
+localStorage.setItem("car",car);
+
+window.location.href="booking.html";
 
 });
 
-dropInput.addEventListener("keyup",function(){
-
-showSuggestions(this,dropList);
-
 });
 
-/* Hide on Click Outside */
+/* Booking Page */
 
-document.addEventListener("click",function(e){
+if(document.getElementById("selectedCar")){
 
-if(!pickupList.contains(e.target) && e.target!==pickupInput){
+document.getElementById("selectedCar").innerText=
+localStorage.getItem("car");
 
-pickupList.style.display="none";
-
-}
-
-if(!dropList.contains(e.target) && e.target!==dropInput){
-
-dropList.style.display="none";
+document.getElementById("bookingFare").innerText=
+"₹ "+localStorage.getItem("fare");
 
 }
 
-});
-/* ==========================================
-FINAL SCRIPT.JS - PART 3
-Booking + WhatsApp + Dynamic Fields
-========================================== */
+/* WhatsApp Booking */
 
-const tripType = document.getElementById("tripType");
-const localPackageBox = document.getElementById("localPackageBox");
-const returnDateBox = document.getElementById("returnDateBox");
+const confirmBtn=document.getElementById("confirmBooking");
 
-tripType.addEventListener("change",function(){
+if(confirmBtn){
 
-if(this.value==="Local Rental"){
-
-localPackageBox.style.display="block";
-returnDateBox.style.display="none";
-
-}
-
-else if(this.value==="Round Trip"){
-
-localPackageBox.style.display="none";
-returnDateBox.style.display="block";
-
-}
-
-else{
-
-localPackageBox.style.display="none";
-returnDateBox.style.display="none";
-
-}
-
-});
-
-/* Booking */
-
-document.getElementById("bookNow").addEventListener("click",function(){
-
-const bookingId="MP"+Math.floor(100000+Math.random()*900000);
+confirmBtn.addEventListener("click",function(){
 
 const name=document.getElementById("customerName").value.trim();
 
-const mobile=document.getElementById("mobile").value.trim();
+const mobile=document.getElementById("customerMobile").value.trim();
 
-const pickup=document.getElementById("pickup").value.trim();
+const address=document.getElementById("pickupAddress").value.trim();
 
-const drop=document.getElementById("drop").value.trim();
+const note=document.getElementById("specialNote").value.trim();
 
-const trip=document.getElementById("tripType").value;
+if(name==""){
 
-const rental=document.getElementById("localPackage").value;
-
-const pickupDate=document.getElementById("pickupDate").value;
-
-const pickupTime=document.getElementById("pickupTime").value;
-
-const returnDate=document.getElementById("returnDate").value;
-
-const vehicle=document.getElementById("vehicle").value;
-
-const passengers=document.getElementById("passengers").value;
-
-const note=document.getElementById("note").value.trim();
-
-if(name===""){
-
-alert("Enter Customer Name");
+alert("Enter Name");
 
 return;
 
@@ -324,76 +331,31 @@ return;
 
 }
 
-if(pickup===""){
+const bookingId="MP"+Math.floor(Math.random()*900000+100000);
 
-alert("Enter Pickup Location");
+const message=`🚖 *MP TAXI SERVICE*
 
-return;
+🆔 Booking ID : ${bookingId}
 
-}
+👤 Name : ${name}
 
-if(drop==="" && trip!=="Local Rental"){
+📞 Mobile : ${mobile}
 
-alert("Enter Drop Location");
+📍 Pickup : ${localStorage.getItem("pickup")}
 
-return;
+📍 Drop : ${localStorage.getItem("drop")}
 
-}
+📅 Date : ${localStorage.getItem("date")}
 
-if(trip===""){
+🕒 Time : ${localStorage.getItem("time")}
 
-alert("Select Trip Type");
+🚗 Vehicle : ${localStorage.getItem("car")}
 
-return;
+💰 Fare : ₹${localStorage.getItem("fare")}
 
-}
+🏠 Pickup Address : ${address}
 
-const message=`🚖 *MP TAXI SERVICE INDORE*
-
-━━━━━━━━━━━━━━
-
-🆔 Booking ID
-${bookingId}
-
-👤 Name
-${name}
-
-📞 Mobile
-${mobile}
-
-📍 Pickup
-${pickup}
-
-📍 Drop
-${drop}
-
-🚖 Trip
-${trip}
-
-🕒 Rental Package
-${rental}
-
-📅 Pickup Date
-${pickupDate}
-
-⏰ Pickup Time
-${pickupTime}
-
-📅 Return Date
-${returnDate}
-
-🚗 Vehicle
-${vehicle}
-
-👥 Passengers
-${passengers}
-
-📝 Note
-${note}
-
-━━━━━━━━━━━━━━
-
-Please Confirm My Booking.`;
+📝 Note : ${note}`;
 
 window.open(
 
@@ -404,3 +366,5 @@ window.open(
 );
 
 });
+
+}
