@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
 
+Sitemap: https://mptaxiserviceindore.github.io/mptaxi-service-indore/sitemap.xml
